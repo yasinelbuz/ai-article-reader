@@ -1,6 +1,5 @@
 "use client";
 
-import { useWordSelection } from "@/hooks/useWordSelection";
 import { useState, useEffect } from "react";
 import WordSaveNotification from "./WordSaveNotification";
 
@@ -12,12 +11,8 @@ interface WordSelectionWrapperProps {
 }
 
 export default function WordSelectionWrapper({
-  articleId,
-  articleTitle,
-  level,
   children,
 }: WordSelectionWrapperProps) {
-  const { savedWords } = useWordSelection(articleId, articleTitle, level);
   const [lastSavedWord, setLastSavedWord] = useState<string | null>(null);
 
   useEffect(() => {

@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 interface ReadingProgressButtonProps {
   articleId: string;
   className?: string;
@@ -9,7 +7,6 @@ interface ReadingProgressButtonProps {
 }
 
 export default function ReadingProgressButton({
-  articleId,
   className = "",
   duration = "5 min",
 }: ReadingProgressButtonProps) {

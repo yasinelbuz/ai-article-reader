@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -5,41 +6,11 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/BackButton";
 import Link from "next/link";
-import type { Metadata } from "next";
 import WordSelectionWrapper from "@/components/WordSelectionWrapper";
 import KeyboardShortcutHint from "@/components/KeyboardShortcutHint";
 import ArticleQuiz from "@/components/ArticleQuiz";
 
-type Props = {
-  params: {
-    level: string;
-    articleId: string;
-  };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  try {
-    const filePath = path.join(
-      process.cwd(),
-      "content",
-      params.level,
-      `${params.articleId}.md`
-    );
-    const fileContent = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(fileContent);
-
-    return {
-      title: data.title,
-      description: data.excerpt,
-    };
-  } catch {
-    return {
-      title: "Article Not Found",
-    };
-  }
-}
-
-export default async function ArticlePage({ params }: Props) {
+export default async function ArticlePage({ params }: any) {
   try {
     const filePath = path.join(
       process.cwd(),

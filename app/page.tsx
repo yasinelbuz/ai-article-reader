@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { getAllArticles } from "../utils/articles";
 import ReadingStatus from "@/components/ReadingStatus";
-import MDXContent from "@/components/MDXContent";
 
 const PREVIEW_COUNT = 3; // Kaç makale gösterileceği
 

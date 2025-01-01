@@ -2,15 +2,17 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-interface Article {
+export interface Article {
   id: string;
   title: string;
   excerpt: string;
   tags?: string[];
   readingTime?: string;
+  difficulty?: string;
+  order?: number;
 }
 
-interface Level {
+export interface Level {
   id: string;
   title: string;
   description: string;
@@ -18,7 +20,7 @@ interface Level {
 }
 
 export function getAllArticles(): Level[] {
-  const levels = [
+  const levels: Level[] = [
     {
       id: "beginner",
       title: "Beginner",
@@ -46,7 +48,7 @@ export function getAllArticles(): Level[] {
     if (fs.existsSync(levelPath)) {
       const files = fs.readdirSync(levelPath);
 
-      level.articles = files
+      const articles: Article[] = files
         .filter((file) => file.endsWith(".md"))
         .map((file) => {
           const filePath = path.join(levelPath, file);
@@ -55,12 +57,14 @@ export function getAllArticles(): Level[] {
 
           return {
             id: file.replace(".md", ""),
-            title: data.title,
-            excerpt: data.excerpt,
-            tags: data.tags,
-            readingTime: data.readingTime,
+            title: data.title || "",
+            excerpt: data.excerpt || "",
+            tags: data.tags || [],
+            readingTime: data.readingTime || "",
           };
         });
+
+      level.articles = articles;
     }
   });
 
@@ -71,7 +75,6 @@ export function getLevelArticles(levelId: string): Article[] {
   try {
     const levelPath = path.join(process.cwd(), "content", levelId);
 
-    // Dizin var mı kontrol et
     if (!fs.existsSync(levelPath)) {
       return [];
     }
@@ -86,15 +89,15 @@ export function getLevelArticles(levelId: string): Article[] {
 
         return {
           id: file.replace(/\.md$/, ""),
-          title: data.title,
-          excerpt: data.excerpt,
+          title: data.title || "",
+          excerpt: data.excerpt || "",
+          tags: data.tags || [],
+          readingTime: data.readingTime || "",
           difficulty: data.difficulty,
-          readingTime: data.readingTime,
-          tags: data.tags,
           order: data.order || 0,
-        } as Article;
+        };
       })
-      .sort((a, b) => a.order - b.order);
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
 
     return articles;
   } catch (error) {

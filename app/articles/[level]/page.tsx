@@ -1,35 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import { getLevelArticles } from "@/utils/articles";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/BackButton";
-import type { Metadata } from "next";
 import ReadingStatus from "@/components/ReadingStatus";
 
-type Props = {
-  params: {
-    level: string;
-  };
-};
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const levelTitle =
-    params.level.charAt(0).toUpperCase() + params.level.slice(1);
-
-  return {
-    title: `${levelTitle} Level English Articles - LinguaFlow`,
-    description: `Improve your English with our ${levelTitle.toLowerCase()} level articles. Perfect for ${
-      params.level
-    } English learners.`,
-    keywords: `${params.level} english, english learning, ${params.level} level articles, english practice, reading comprehension`,
-    openGraph: {
-      title: `${levelTitle} Level English Articles - LinguaFlow`,
-      description: `Improve your English with our ${levelTitle.toLowerCase()} level articles`,
-    },
-  };
-}
-
-export default function ArticlesByLevel({ params }: Props) {
-  const articles = getLevelArticles(params.level);
+export default function ArticlesByLevel({ params }: any) {
+  const articles = getLevelArticles(params?.level);
 
   if (articles.length === 0) {
     notFound();

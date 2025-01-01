@@ -19,3 +19,42 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.highlighted-word {
+  background: linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(139, 92, 246, 0.2) 60%, rgba(139, 92, 246, 0.2) 100%);
+  padding: 0 2px;
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+
+.highlighted-word:hover {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+.prose {
+  @apply text-gray-300;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  @apply text-white font-semibold leading-relaxed;
+}
+
+.prose p {
+  @apply leading-relaxed mb-6;
+}
+
+.prose a {
+  @apply text-violet-400 hover:text-violet-300 no-underline;
+}
+
+@keyframes highlight {
+  from { background-color: rgba(234, 179, 8, 0.2); }
+  to { background-color: rgba(234, 179, 8, 0.3); }
+}
+
+.highlighted-word {
+  animation: highlight 1s ease infinite alternate;
+}

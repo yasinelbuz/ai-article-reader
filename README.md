@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Article Reader
+
+AI Article Reader is an innovative platform that helps users improve their English reading skills through AI-generated articles. The platform offers content at different proficiency levels and includes features like vocabulary tracking and reading progress monitoring.
+
+## Features
+
+- AI-generated English articles at multiple proficiency levels
+- Vocabulary tracking system
+- Reading progress monitoring
+- Interactive quizzes
+- Responsive design for all devices
+
+## Project Structure
+
+```
+├── app/
+│   ├── about/
+│   │   └── page.tsx
+│   ├── articles/
+│   │   ├── [level]/
+│   │   │   ├── [articleId]/
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   ├── saved-words/
+│   │   └── page.tsx
+│   ├── reading-progress/
+│   │   └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── ArticleQuiz.tsx
+│   ├── BackButton.tsx
+│   ├── HighlightedText.tsx
+│   ├── KeyboardShortcutHint.tsx
+│   ├── MDXContent.tsx
+│   ├── Navbar.tsx
+│   ├── ReadingProgressButton.tsx
+│   ├── ReadingStatus.tsx
+│   └── WordSelectionWrapper.tsx
+├── hooks/
+│   ├── useReadingProgress.ts
+│   └── useWordSelection.ts
+├── public/
+│   └── logo.svg
+├── utils/
+│   └── articles.ts
+```
+
+## Technologies Used
+
+- Next.js 13+ (App Router)
+- TypeScript
+- Tailwind CSS
+- MDX for article content
+- Lucide Icons
 
 ## Getting Started
 
-First, run the development server:
+To get started with this project:
 
 ```bash
+git clone https://github.com/yourusername/ai-article-reader.git
+cd ai-article-reader
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

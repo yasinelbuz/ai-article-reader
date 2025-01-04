@@ -26,7 +26,7 @@ interface ArticleContentProps {
   levelTitle: string;
 }
 
-export default function ArticleContent({
+export default async function ArticleContent({
   content,
   data,
   params,
@@ -56,7 +56,7 @@ export default function ArticleContent({
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight flex items-center gap-4">
             {data.title}
-            <ReadingStatusBadge articleId={params.articleId} />
+            <ReadingStatusBadge articleId={String(params.articleId)} />
           </h1>
           <p className="text-gray-400">{data.excerpt}</p>
         </header>
@@ -70,7 +70,7 @@ export default function ArticleContent({
         {/* Quiz Section */}
         {data.quiz && (
           <ArticleQuiz
-            articleId={params.articleId}
+            articleId={String(params.articleId)}
             title={data.quiz.title}
             questions={data.quiz.questions}
           />

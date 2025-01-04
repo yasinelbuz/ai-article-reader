@@ -7,23 +7,26 @@ import ArticleContent from "@/components/ArticleContent";
 
 export default async function ArticlePage({ params }: any) {
   try {
+    const resolvedParams = await Promise.resolve(params);
+    const level = String(resolvedParams.level);
+    const articleId = String(resolvedParams.articleId);
+
     const filePath = path.join(
       process.cwd(),
       "content",
-      params.level,
-      `${params.articleId}.md`
+      level,
+      `${articleId}.md`
     );
     const fileContent = fs.readFileSync(filePath, "utf8");
     const { content, data } = matter(fileContent);
 
-    const levelTitle =
-      params.level.charAt(0).toUpperCase() + params.level.slice(1);
+    const levelTitle = level.charAt(0).toUpperCase() + level.slice(1);
 
     return (
       <ArticleContent
         content={content}
         data={data as any}
-        params={params}
+        params={{ level, articleId }}
         levelTitle={levelTitle}
       />
     );

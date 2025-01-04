@@ -4,7 +4,7 @@ import ReadingStatus from "@/components/ReadingStatus";
 
 const PREVIEW_COUNT = 3; // Kaç makale gösterileceği
 
-export default function Home() {
+export default function HomePage() {
   const levels = getAllArticles();
 
   return (

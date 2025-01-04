@@ -1,23 +1,9 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { Article, Level } from "@/types/articles";
 
-export interface Article {
-  id: string;
-  title: string;
-  excerpt: string;
-  tags?: string[];
-  readingTime?: string;
-  difficulty?: string;
-  order?: number;
-}
 
-export interface Level {
-  id: string;
-  title: string;
-  description: string;
-  articles: Article[];
-}
 
 export function getAllArticles(): Level[] {
   const levels: Level[] = [

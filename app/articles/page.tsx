@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllArticles } from "@/utils/articles";
 import ReadingStatus from "@/components/ReadingStatus";
+import { Article, Level } from "@/types/articles";
 
 export const metadata: Metadata = {
   title: "All Articles",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function ArticlesPage() {
-  const levels = getAllArticles();
+  const levels: Level[] = getAllArticles();
 
   return (
     <div className="min-h-screen bg-[#0A0A0B] text-white">
@@ -33,7 +34,7 @@ export default function ArticlesPage() {
               </div>
 
               <div className="grid gap-6">
-                {level.articles.map((article) => (
+                {level.articles.map((article: Article) => (
                   <Link
                     key={article.id}
                     href={`/articles/${level.id}/${article.id}`}

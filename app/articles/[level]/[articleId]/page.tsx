@@ -22,7 +22,7 @@ export default async function ArticlePage({ params }: any) {
     return (
       <ArticleContent
         content={content}
-        data={data}
+        data={data as any}
         params={params}
         levelTitle={levelTitle}
       />

@@ -1,7 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import ArticleInteractiveWrapper from "./ArticleInteractiveWrapper";
 import ArticleQuiz from "./ArticleQuiz";
 import ReadingStatusBadge from "./ReadingStatusBadge";
+import ArticleInteractiveWrapper from "./ArticleInteractiveWrapper";
 
 interface ArticleContentProps {
   content: string;

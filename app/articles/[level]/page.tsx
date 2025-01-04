@@ -63,7 +63,7 @@ export default function ArticlesByLevel({ params }: any) {
                   <p className="text-gray-400">{article.excerpt}</p>
                   {article.tags && (
                     <div className="mt-4 flex flex-wrap gap-2">
-                      {article.tags.map((tag) => (
+                      {article.tags.map((tag: string) => (
                         <span
                           key={tag}
                           className="px-2 py-1 text-xs rounded-full bg-gray-800 text-gray-400"

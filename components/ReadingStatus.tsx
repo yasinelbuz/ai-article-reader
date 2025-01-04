@@ -64,7 +64,7 @@ export default function ReadingStatus({
   }
 
   return read ? (
-    <span className={`text-violet-400 ${className}`}>
+    <span className={`text-[#ff3131] ${className}`}>
       <CheckCircleIcon />
     </span>
   ) : (

@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Article Reader - Improve Your English with AI",
-    template: "%s | AI Article Reader",
+    default: "ReadNow - Improve Your English with AI",
+    template: "%s | ReadNow",
   },
   description:
     "Enhance your English reading skills with AI-powered articles tailored to your level. Practice vocabulary, track progress, and learn efficiently.",
@@ -19,12 +19,12 @@ export const metadata: Metadata = {
     "vocabulary",
     "language learning",
   ],
-  authors: [{ name: "AI Article Reader Team" }],
+  authors: [{ name: "ReadNow Team" }],
   openGraph: {
-    title: "AI Article Reader",
+    title: "ReadNow",
     description: "AI-powered English reading practice",
-    url: "https://aiarticlereader.com",
-    siteName: "AI Article Reader",
+    url: "https://readnow.com",
+    siteName: "ReadNow",
     type: "website",
   },
 };

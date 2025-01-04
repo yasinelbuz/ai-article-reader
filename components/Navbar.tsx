@@ -20,15 +20,8 @@ export const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/logo.svg"
-              alt="AI Article Reader"
-              width={32}
-              height={32}
-            />
-            <span className="text-xl font-bold text-white">
-              AI Article Reader
-            </span>
+            <Image src="/logo.svg" alt="ReadNow" width={32} height={32} />
+            <span className="text-xl font-bold text-white">ReadNow</span>
           </Link>
 
           {/* Desktop Menu */}

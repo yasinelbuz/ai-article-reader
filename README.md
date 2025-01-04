@@ -1,6 +1,6 @@
-# AI Article Reader
+# ReadNow
 
-AI Article Reader is an innovative platform that helps users improve their English reading skills through AI-generated articles. The platform offers content at different proficiency levels and includes features like vocabulary tracking and reading progress monitoring.
+ReadNow is an innovative platform that helps users improve their English reading skills through AI-generated articles. The platform offers content at different proficiency levels and includes features like vocabulary tracking and reading progress monitoring.
 
 ## Features
 
@@ -60,8 +60,8 @@ AI Article Reader is an innovative platform that helps users improve their Engli
 To get started with this project:
 
 ```bash
-git clone https://github.com/yourusername/ai-article-reader.git
-cd ai-article-reader
+git clone https://github.com/yourusername/readnow.git
+cd readnow
 npm install
 npm run dev
 ```

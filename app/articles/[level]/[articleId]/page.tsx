@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/BackButton";
-import Link from "next/link";
 import WordSelectionWrapper from "@/components/WordSelectionWrapper";
 import KeyboardShortcutHint from "@/components/KeyboardShortcutHint";
 import ArticleQuiz from "@/components/ArticleQuiz";
+import ArticleReadingStatus from "@/components/ArticleReadingStatus";
+import ReadingStatusBadge from "@/components/ReadingStatusBadge";
 
 export default async function ArticlePage({ params }: any) {
   try {
@@ -34,23 +36,11 @@ export default async function ArticlePage({ params }: any) {
                 label="Home"
                 className="text-violet-400 hover:text-violet-300"
               />
-              <div className="flex items-center gap-4">
-                <button className="text-violet-400 hover:text-violet-300 transition-colors">
-                  Mark as Read
-                </button>
-                <Link
-                  href={`/articles/${params.level}`}
-                  className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-                    params.level === "beginner"
-                      ? "bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20"
-                      : params.level === "intermediate"
-                      ? "bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20"
-                      : "bg-red-500/10 text-red-400 hover:bg-red-500/20"
-                  }`}
-                >
-                  {levelTitle} Level
-                </Link>
-              </div>
+              <ArticleReadingStatus
+                articleId={params.articleId}
+                level={params.level}
+                levelTitle={levelTitle}
+              />
             </div>
           </div>
         </nav>
@@ -77,8 +67,9 @@ export default async function ArticlePage({ params }: any) {
                   </div>
                 )}
               </div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight flex items-center gap-4">
                 {data.title}
+                <ReadingStatusBadge articleId={params.articleId} />
               </h1>
               <p className="text-xl text-gray-400 leading-relaxed">
                 {data.excerpt}
@@ -112,3 +103,4 @@ export default async function ArticlePage({ params }: any) {
     notFound();
   }
 }
+

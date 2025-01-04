@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About AI Article Reader",
+  title: "About ReadNow",
   description:
     "Learn about our mission to help you improve your English reading skills through AI-powered articles.",
 };
@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#0A0A0B] text-white">
       <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <h1 className="text-4xl font-bold mb-8">About AI Article Reader</h1>
+        <h1 className="text-4xl font-bold mb-8">About ReadNow</h1>
 
         <div className="space-y-8 text-gray-300">
           <section>
@@ -18,9 +18,9 @@ export default function AboutPage() {
               Our Mission
             </h2>
             <p>
-              AI Article Reader is designed to help English learners improve
-              their reading comprehension and vocabulary through AI-generated
-              articles tailored to their proficiency level.
+              ReadNow is designed to help English learners improve their reading
+              comprehension and vocabulary through AI-generated articles
+              tailored to their proficiency level.
             </p>
           </section>
 

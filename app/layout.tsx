@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { Navbar } from "@/components/Navbar";
 
@@ -43,6 +45,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         {children}
+        <Analytics />
+        <GoogleAnalytics gaId="G-S91SX8FPZ1" />
       </body>
     </html>
   );

@@ -1,5 +1,4 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import ArticleQuiz from "./ArticleQuiz";
 import ReadingStatusBadge from "./ReadingStatusBadge";
 import ArticleInteractiveWrapper from "./ArticleInteractiveWrapper";
 

@@ -1,8 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { getAllArticles } from "@/utils/articles";
-import ReadingStatus from "@/components/ReadingStatus";
-import { Article, Level } from "@/types/articles";
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {

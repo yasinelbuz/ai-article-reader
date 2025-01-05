@@ -3,6 +3,7 @@ title: "A Day at the Beach"
 excerpt: "Learn about beach activities and vocabulary through this simple story."
 tags: ["daily life", "nature", "activities"]
 readingTime: "5 min"
+date: "2024-05-12"
 quiz:
   title: "Reading Comprehension"
   questions:

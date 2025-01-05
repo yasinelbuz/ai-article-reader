@@ -38,12 +38,18 @@ ReadNow is an innovative platform that helps users improve their English reading
 │   ├── ReadingProgressButton.tsx
 │   ├── ReadingStatus.tsx
 │   └── WordSelectionWrapper.tsx
+├── containers/
+│   ├── home/
+│   │   ├── Hero.tsx
+│   │   └── Content.tsx
 ├── hooks/
 │   ├── useReadingProgress.ts
 │   └── useWordSelection.ts
 ├── public/
 │   └── logo.svg
 ├── utils/
+│   └── articles.ts
+├── types/
 │   └── articles.ts
 ```
 

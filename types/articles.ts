@@ -12,6 +12,7 @@ export interface Article {
   readingTime?: string;
   difficulty?: string;
   order?: number;
+  date?: string;
 }
 
 interface QuizQuestion {
@@ -34,4 +35,5 @@ export interface ArticleContent {
   difficulty: "beginner" | "intermediate" | "advanced";
   tags?: string[];
   quiz?: Quiz;
+  date?: string;
 }

@@ -47,6 +47,7 @@ export function getAllArticles(): Level[] {
             excerpt: data.excerpt || "",
             tags: data.tags || [],
             readingTime: data.readingTime || "",
+            date: data.date || "",
           };
         });
 
@@ -81,6 +82,7 @@ export function getLevelArticles(levelId: string): Article[] {
           readingTime: data.readingTime || "",
           difficulty: data.difficulty,
           order: data.order || 0,
+          date: data.date || "",
         };
       })
       .sort((a, b) => (a.order || 0) - (b.order || 0));

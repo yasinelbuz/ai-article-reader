@@ -1,108 +1,114 @@
-import React from "react";
-import Link from "next/link";
-import ReadingStatus from "@/components/ReadingStatus";
-import { Article } from "@/types/articles";
+"use client";
 
-const PREVIEW_COUNT = 3;
+import React, { useState } from "react";
+import ArticleCard from "@/components/ArticleCard";
+import { Level as LevelType } from "@/types/articles";
+import { useReadingProgress } from "@/hooks/useReadingProgress";
 
-interface ArticleLevel {
-  id: string;
-  title: string;
-  description: string;
-  articles: Article[];
-}
+type Level = "all" | "beginner" | "intermediate" | "advanced";
+type ReadStatus = "all" | "read" | "unread";
 
 interface ContentProps {
-  levels: ArticleLevel[];
+  levels: LevelType[];
 }
 
 export default function Content({ levels }: ContentProps) {
+  const [selectedLevel, setSelectedLevel] = useState<Level>("all");
+  const [readStatus, setReadStatus] = useState<ReadStatus>("all");
+  const { isRead } = useReadingProgress();
+
+  // First get all articles with their levels
+  const allArticlesWithLevels = levels.flatMap((level) =>
+    level.articles.map((article) => ({
+      ...article,
+      level: level.id,
+      isRead: isRead(article.id),
+    }))
+  );
+
+  // Then apply both filters separately
+  const filteredArticles = allArticlesWithLevels.filter((article) => {
+    // Level check
+    if (selectedLevel !== "all" && article.level !== selectedLevel) {
+      return false;
+    }
+
+    // Read status check
+    if (readStatus === "read") {
+      return article.isRead;
+    }
+    if (readStatus === "unread") {
+      return !article.isRead;
+    }
+
+    return true;
+  });
+
+  const filterButtons = [
+    { id: "all", label: "All Articles" },
+    { id: "beginner", label: "Beginner" },
+    { id: "intermediate", label: "Intermediate" },
+    { id: "advanced", label: "Advanced" },
+  ];
+
+  const readStatusButtons = [
+    { id: "all", label: "All" },
+    { id: "read", label: "Read" },
+    { id: "unread", label: "Unread" },
+  ];
+
   return (
     <main className="container mx-auto px-4 py-16">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {levels.map((level) => (
-          <div key={level.id} className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-2xl blur-sm group-hover:blur opacity-25 group-hover:opacity-50 transition-all"></div>
-            <div className="relative bg-[#1A1A1B] rounded-2xl p-6 h-full border border-gray-800 hover:border-violet-500/50 transition-colors">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-4">
-                  <span
-                    className={`w-3 h-3 rounded-full ${
-                      level.id === "beginner"
-                        ? "bg-emerald-500"
-                        : level.id === "intermediate"
-                        ? "bg-yellow-500"
-                        : "bg-red-500"
-                    }`}
-                  ></span>
-                  <h2 className="text-2xl font-bold text-white">
-                    {level.title}
-                  </h2>
-                </div>
-                {level.articles.length > PREVIEW_COUNT && (
-                  <Link
-                    href={`/articles/${level.id}`}
-                    className="text-sm text-violet-400 hover:text-violet-300 transition-colors"
-                  >
-                    View All ({level.articles.length})
-                  </Link>
-                )}
-              </div>
-              <p className="text-gray-400 mb-8">{level.description}</p>
+      {/* Filter Buttons */}
+      <div className="flex flex-col gap-4 mb-6">
+        {/* Level Filters */}
+        <div className="flex flex-wrap items-center gap-2">
+          {filterButtons.map((button) => (
+            <button
+              key={button.id}
+              onClick={() => setSelectedLevel(button.id as Level)}
+              className={`px-6 py-2.5 rounded-[15px] text-sm font-medium transition-all duration-300
+                ${
+                  selectedLevel === button.id
+                    ? "bg-violet-800 text-white shadow-lg"
+                    : "bg-[#1A1A1B] text-gray-400 hover:bg-[#242425] hover:text-violet-400"
+                }
+              `}
+            >
+              {button.label}
+            </button>
+          ))}
+        </div>
 
-              <div className="space-y-4">
-                {level.articles.slice(0, PREVIEW_COUNT).map((article) => (
-                  <Link
-                    key={article.id}
-                    href={`/articles/${level.id}/${article.id}`}
-                    className="group block p-6 rounded-xl bg-[#141415] hover:bg-[#1E1E1F] border border-gray-800/50 hover:border-violet-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/5"
-                  >
-                    <div className="flex items-start gap-4">
-                      <ReadingStatus
-                        articleId={article.id}
-                        className="mt-1.5 shrink-0"
-                      />
-                      <div className="flex-1 space-y-4">
-                        <div>
-                          <h3 className="text-xl font-semibold text-white leading-relaxed group-hover:text-violet-400 transition-colors">
-                            {article.title}
-                          </h3>
-                          <p className="text-sm text-gray-400 leading-relaxed mt-2">
-                            {article.excerpt}
-                          </p>
-                        </div>
+        {/* Read Status Filters */}
+        <div className="flex flex-wrap items-center gap-2">
+          {readStatusButtons.map((button) => (
+            <button
+              key={button.id}
+              onClick={() => setReadStatus(button.id as ReadStatus)}
+              className={`px-6 py-2.5 rounded-[15px] text-sm font-medium transition-all duration-300
+                ${
+                  readStatus === button.id
+                    ? "bg-violet-800 text-white shadow-lg"
+                    : "bg-[#1A1A1B] text-gray-400 hover:bg-[#242425] hover:text-violet-400"
+                }
+              `}
+            >
+              {button.label}
+            </button>
+          ))}
+        </div>
+      </div>
 
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-4">
-                            <span className="px-3 py-1 text-xs font-medium rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20">
-                              {article.readingTime}
-                            </span>
-                            <div className="flex items-center gap-2 text-violet-400 text-sm">
-                              <span>Start Reading</span>
-                              <svg
-                                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M9 5l7 7-7 7"
-                                />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
+      {/* Articles Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredArticles.length > 0 ? (
+          filteredArticles.map((article) => (
+            <ArticleCard key={article.id} article={article} />
+          ))
+        ) : (
+          <p className="text-gray-400 text-sm">No articles found</p>
+        )}
       </div>
     </main>
   );

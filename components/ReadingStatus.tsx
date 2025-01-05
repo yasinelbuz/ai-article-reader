@@ -11,14 +11,14 @@ interface ReadingStatusProps {
 const CheckCircleIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
+    width="20"
+    height="20"
     viewBox="0 0 24 24"
-    fill="none"
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    className="drop-shadow-md"
   >
     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
     <polyline points="22 4 12 14.01 9 11.01" />
@@ -28,14 +28,15 @@ const CheckCircleIcon = () => (
 const CircleIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
+    width="20"
+    height="20"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    className="drop-shadow-sm"
   >
     <circle cx="12" cy="12" r="10" />
   </svg>
@@ -46,30 +47,23 @@ export default function ReadingStatus({
   className = "",
 }: ReadingStatusProps) {
   const { isRead } = useReadingProgress();
-  const [mounted, setMounted] = useState(false);
   const [read, setRead] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     setRead(isRead(articleId));
   }, [articleId, isRead]);
 
-  // İlk render sırasında default görünümü döndür
-  if (!mounted) {
-    return (
-      <span className={`text-gray-600 ${className}`}>
-        <CircleIcon />
-      </span>
-    );
-  }
-
-  return read ? (
-    <span className={`text-[#ff3131] ${className}`}>
-      <CheckCircleIcon />
-    </span>
-  ) : (
-    <span className={`text-gray-600 ${className}`}>
-      <CircleIcon />
-    </span>
+  return (
+    <div className="absolute top-3 right-3">
+      {read ? (
+        <span className={`text-violet-500 transition-colors ${className}`}>
+          <CheckCircleIcon />
+        </span>
+      ) : (
+        <span className={`text-gray-600/50 transition-colors ${className}`}>
+          <CircleIcon />
+        </span>
+      )}
+    </div>
   );
 }

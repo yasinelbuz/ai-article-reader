@@ -98,17 +98,17 @@ export default function Content({ levels }: ContentProps) {
             </button>
           ))}
         </div>
+
+        <div className="flex items-center gap-2 text-sm text-gray-400">
+          {filteredArticles.length} articles found
+        </div>
       </div>
 
       {/* Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredArticles.length > 0 ? (
-          filteredArticles.map((article) => (
-            <ArticleCard key={article.id} article={article} />
-          ))
-        ) : (
-          <p className="text-gray-400 text-sm">No articles found</p>
-        )}
+        {filteredArticles.map((article) => (
+          <ArticleCard key={article.id} article={article} />
+        ))}
       </div>
     </main>
   );

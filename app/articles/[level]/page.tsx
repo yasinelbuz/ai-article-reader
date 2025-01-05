@@ -17,7 +17,7 @@ export default function ArticlesByLevel({ params }: any) {
     params.level.charAt(0).toUpperCase() + params.level.slice(1);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0B] text-white">
+    <div className="bg-[#0A0A0B] text-white">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="mb-12">

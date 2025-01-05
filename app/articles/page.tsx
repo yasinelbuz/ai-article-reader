@@ -13,7 +13,7 @@ export default function ArticlesPage() {
   const levels: Level[] = getAllArticles();
 
   return (
-    <div className="min-h-screen bg-[#0A0A0B] text-white">
+    <div className="bg-[#0A0A0B] text-white">
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold mb-12">All Articles</h1>
 

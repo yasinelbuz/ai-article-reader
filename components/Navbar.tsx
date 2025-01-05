@@ -9,7 +9,6 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
-    { href: "/vocabulary", label: "Vocabulary", icon: Star },
     { href: "/articles", label: "Articles", icon: Book },
     { href: "/reading-progress", label: "Progress", icon: BookOpen },
     { href: "/about", label: "About", icon: Info },

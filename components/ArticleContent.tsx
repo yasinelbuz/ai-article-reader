@@ -66,15 +66,6 @@ export default async function ArticleContent({
             <MDXRemote source={content} />
           </div>
         </div>
-
-        {/* Quiz Section */}
-        {data.quiz && (
-          <ArticleQuiz
-            articleId={String(params.articleId)}
-            title={data.quiz.title}
-            questions={data.quiz.questions}
-          />
-        )}
       </article>
     </ArticleInteractiveWrapper>
   );

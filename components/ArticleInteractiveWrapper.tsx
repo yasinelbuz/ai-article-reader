@@ -24,7 +24,7 @@ export default function ArticleInteractiveWrapper({
     <div className="min-h-screen bg-[#0A0A0B] text-white">
       {/* Navigation Bar */}
       <nav className="sticky top-0 z-50 bg-[#0A0A0B]/95 backdrop-blur-sm border-b border-gray-800">
-        <div className="container mx-auto px-4 py-4">
+        <div className="px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <BackButton

@@ -4,6 +4,7 @@ import path from "path";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import ArticleContent from "@/components/ArticleContent";
+import logger from "@/utils/logger";
 
 export default async function ArticlePage({ params }: any) {
   try {
@@ -31,7 +32,7 @@ export default async function ArticlePage({ params }: any) {
       />
     );
   } catch (error) {
-    console.error("Error loading article:", error);
+    logger.error("Error loading article:", error);
     notFound();
   }
 }

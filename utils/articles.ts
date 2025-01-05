@@ -2,8 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { Article, Level } from "@/types/articles";
-
-
+import logger from "./logger";
 
 export function getAllArticles(): Level[] {
   const levels: Level[] = [
@@ -89,7 +88,7 @@ export function getLevelArticles(levelId: string): Article[] {
 
     return articles;
   } catch (error) {
-    console.error(`Error reading level ${levelId}:`, error);
+    logger.error(`Error reading level ${levelId}:`, error);
     return [];
   }
 }

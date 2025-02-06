@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "vocabulary",
     "language learning",
   ],
-  authors: [{ name: "ReadNow Team" }],
+  authors: [{ name: "Yasin Elbüz" }],
   openGraph: {
     title: "ReadNow",
     description: "AI-powered English reading practice",
@@ -31,6 +31,8 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+
 
 export default function RootLayout({
   children,

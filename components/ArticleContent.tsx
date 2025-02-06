@@ -1,6 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import ReadingStatusBadge from "./ReadingStatusBadge";
 import ArticleInteractiveWrapper from "./ArticleInteractiveWrapper";
+import dayjs from "dayjs";
 
 interface ArticleContentProps {
   content: string;
@@ -8,15 +9,8 @@ interface ArticleContentProps {
     title: string;
     tags?: string[];
     excerpt?: string;
-    quiz?: {
-      title: string;
-      questions: {
-        id: string;
-        question: string;
-        options: string[];
-        correctAnswer: number;
-      }[];
-    };
+    date?: string;
+    readingTime?: string;
   };
   params: {
     level: string;
@@ -37,32 +31,27 @@ export default async function ArticleContent({
       data={data}
       levelTitle={levelTitle}
     >
-      <article className="container mx-auto px-4 py-12 max-w-3xl">
-        <header className="article-header mb-12">
-          <div className="flex items-center gap-4 mb-6">
-            {data.tags && (
-              <div className="flex flex-wrap gap-2">
-                {data.tags.map((tag: string) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 text-sm rounded-full bg-gray-800 text-gray-400"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight flex items-center gap-4">
-            {data.title}
-            <ReadingStatusBadge articleId={String(params.articleId)} />
-          </h1>
-          <p className="text-gray-400">{data.excerpt}</p>
-        </header>
+      <article className="container mx-auto px-4 py-12 max-w-3xl flex gap-4 items-start">
+        <div className="font-bold text-2xl rounded-full bg-yellow-700 w-24 flex">
+          1
+        </div>
+        <div>
+          <header className="article-header mb-16">
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2 leading-tight flex items-center gap-4">
+              {data.title}
+              <ReadingStatusBadge articleId={String(params.articleId)} />
+            </h1>
 
-        <div className="prose prose-lg dark:prose-invert">
-          <div className="article-content">
-            <MDXRemote source={content} />
+            <time className="text-gray-400 text-sm">
+              {dayjs(data.date).format("DD MMM YYYY")}
+            </time>
+
+            <p className="text-gray-400">{data.excerpt}</p>
+          </header>
+          <div className="prose prose-lg dark:prose-invert">
+            <div className="article-content">
+              <MDXRemote source={content} />
+            </div>
           </div>
         </div>
       </article>

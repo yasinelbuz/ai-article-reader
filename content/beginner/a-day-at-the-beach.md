@@ -33,8 +33,8 @@ As the day came to an end, Sarah watched the beautiful sunset over the ocean. Th
 
 ## New Vocabulary
 
-- **essentials** (n): things that are absolutely necessary
-- **gentle** (adj): mild, not strong or rough
-- **peaceful** (adj): quiet and calm
-- **refreshing** (adj): making you feel fresh and energetic
-- **shade** (n): an area made dark by something blocking the light  
+- <span className="vocabulary-word">essentials</span> (n): things that are absolutely necessary
+- <span className="vocabulary-word">gentle</span> (adj): mild, not strong or rough
+- <span className="vocabulary-word">peaceful</span> (adj): quiet and calm
+- <span className="vocabulary-word">refreshing</span> (adj): making you feel fresh and energetic
+- <span className="vocabulary-word">shade</span> (n): an area made dark by something blocking the light  

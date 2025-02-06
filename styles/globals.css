@@ -58,3 +58,7 @@ body {
 .highlighted-word {
   animation: highlight 1s ease infinite alternate;
 }
+
+.vocabulary-word {
+  @apply bg-gray-800 text-gray-400 px-2 py-1 text-sm rounded-md;
+}

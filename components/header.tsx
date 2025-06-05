@@ -12,10 +12,11 @@ export const Navbar = () => {
     { href: "/reading-progress", label: "Progress", icon: BookOpen },
     { href: "/about", label: "About", icon: Info },
   ];
+  
 
   return (
-    <nav className="px-4 sticky top-0 z-50 bg-[#0A0A0B]/80 backdrop-blur-sm border-b border-gray-800">
-      <div className="flex items-center justify-between h-16">
+    <nav className="backdrop-blur-sm border-b border-gray-800">
+      <div className="flex items-center justify-between h-[var(--navbar-height)] px-[var(--primary-offset)]">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/logo.svg" alt="ReadNow" width={32} height={32} />
           <span className="text-xl font-bold text-white">ReadNow</span>
@@ -60,6 +61,9 @@ export const Navbar = () => {
           ))}
         </div>
       )}
+
+
+
     </nav>
   );
 };

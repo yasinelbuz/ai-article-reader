@@ -16,7 +16,7 @@ export default function BackButton({
   return (
     <button
       onClick={goBack}
-      className={`group flex items-center gap-2 transition-colors ${className}`}
+      className={`group flex items-center gap-2 transition-colors ${className} bg-[#2A2A2A] rounded-full px-4 py-2`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

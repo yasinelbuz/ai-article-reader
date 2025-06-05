@@ -1,54 +1,31 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { GeneralMetadata } from "@/config/seo";
+import { GeneralLayoutProps } from "@/types";
+import { AnalyticsWrapper } from "@/components/wrapper/analytics-wrapper";
+import { inter } from "@/config/fonts";
 import "@/styles/globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { Navbar } from "@/components/header";
 
-import { Navbar } from "@/components/Navbar";
+export const metadata: Metadata = GeneralMetadata;
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: {
-    default: "ReadNow - Improve Your English with AI",
-    template: "%s | ReadNow",
-  },
-  description:
-    "Enhance your English reading skills with AI-powered articles tailored to your level. Practice vocabulary, track progress, and learn efficiently.",
-  keywords: [
-    "English learning",
-    "AI articles",
-    "reading practice",
-    "vocabulary",
-    "language learning",
-  ],
-  authors: [{ name: "Yasin Elbüz" }],
-  openGraph: {
-    title: "ReadNow",
-    description: "AI-powered English reading practice",
-    url: "https://readnow.com",
-    siteName: "ReadNow",
-    type: "website",
-  },
+const Head = () => {
+  return (
+    <head>
+      <link rel="icon" href="/logo.svg" />
+    </head>
+  );
 };
-
-
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: GeneralLayoutProps) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/logo.svg" />
-      </head>
+      <Head />
       <body className={inter.className}>
         <Navbar />
         {children}
-        <Analytics />
-        <GoogleAnalytics gaId="G-S91SX8FPZ1" />
+        <AnalyticsWrapper />
       </body>
     </html>
   );

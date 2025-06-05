@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --navbar-height: 80px;
+  --primary-offset: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,48 +19,20 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-.highlighted-word {
-  background: linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(139, 92, 246, 0.2) 60%, rgba(139, 92, 246, 0.2) 100%);
-  padding: 0 2px;
-  border-radius: 2px;
-  transition: background-color 0.2s;
-}
+@layer utilities {
+  .container-reading {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--primary-offset);
+    padding-right: var(--primary-offset);
+    max-width: 800px;
+  }
 
-.highlighted-word:hover {
-  background: rgba(139, 92, 246, 0.3);
-}
-
-.prose {
-  @apply text-gray-300;
-}
-
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4 {
-  @apply text-white font-semibold leading-relaxed;
-}
-
-.prose p {
-  @apply leading-relaxed mb-6;
-}
-
-.prose a {
-  @apply text-violet-400 hover:text-violet-300 no-underline;
-}
-
-@keyframes highlight {
-  from { background-color: rgba(234, 179, 8, 0.2); }
-  to { background-color: rgba(234, 179, 8, 0.3); }
-}
-
-.highlighted-word {
-  animation: highlight 1s ease infinite alternate;
-}
-
-.vocabulary-word {
-  @apply bg-gray-800 text-gray-400 px-2 py-1 text-sm rounded-md;
+  @screen 2xl {
+    .container-reading {
+      max-width: 800px;
+    }
+  }
 }

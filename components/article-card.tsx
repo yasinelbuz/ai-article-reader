@@ -25,7 +25,7 @@ export default function ArticleCard({ article }: {article: ArticleTypes}) {
           </Link>
 
           {/* Date */}
-          <p className="text-gray-400 text-xs mt-1">{dayjs(article.created_time).fromNow()}</p>
+          <p className="text-xs mt-1">{dayjs(article.created_time).fromNow()}</p>
 
           {/* Description */}
           <p className="inline-block line-clamp-2 mt-4 text-sm">
@@ -49,7 +49,7 @@ export default function ArticleCard({ article }: {article: ArticleTypes}) {
         {/* Footer */}
         <Link
           href={`/articles/${generateSlug(article.category)}/${generateSlug(article.title)}`}
-          className="border-t border-gray-900 block bg-black absolute left-0 right-0 bottom-0"
+          className="border-t border-gray-900 block bg-black absolute left-0 right-0 bottom-0 hover:bg-red-600"
         >
           <div className="p-4 sticky bottom-0 flex items-center justify-center">
             <span className="inline-flex items-center gap-3 text-sm font-semibold text-gray-100 transition-colors">

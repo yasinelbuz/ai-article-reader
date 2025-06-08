@@ -29,7 +29,6 @@ const initialSelectedLevelAndReadStatusValue = "all"
 
 const mainClass = "container mx-auto px-4 py-16"
 const mainInlineClass = "flex flex-col gap-4 my-8"
-const dividerClass = "my-8 border-gray-600"
 const articleCountClass = "flex items-center text-sm text-gray-400"
 const articleGridClass = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
 

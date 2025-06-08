@@ -7,7 +7,6 @@ import { ArticleTypes } from "@/types/articles";
 import ShortUniqueId from 'short-uuid'
 
 dayjs.extend(relativeTime);
-const translator = ShortUniqueId() // veya: require('short-uuid')()
 
 export default function ArticleCard({ article }: {article: ArticleTypes}) {
   return (
@@ -20,7 +19,7 @@ export default function ArticleCard({ article }: {article: ArticleTypes}) {
       <div className="h-full relative z-1">
         {/* Title & Description */}
         <div className="p-8">
-          <Link href={`/articles/${generateSlug(article.category)}/${generateSlug(article.title)}/${(translator.fromUUID(article.id))}`}>
+          <Link href={`/articles/${generateSlug(article.category)}/${generateSlug(article.title)}/${article.id}`}>
             <h1 className="text-[2.8rem] font-extrabold leading-tight tracking-tight">
               {article.title}
             </h1>

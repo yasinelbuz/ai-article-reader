@@ -1,14 +1,11 @@
 import { notFound } from "next/navigation";
 import BackButton from "@/components/back-button";
 import { getPostByID } from "@/services/articles";
-import ShortUniqueId from 'short-uuid'
 import { Metadata } from "next";
 
-const translator = ShortUniqueId() // veya: require('short-uuid')()
-
 export async function generateMetadata({ params }: { params: Promise<{ post: string }> }): Promise<Metadata> {
-  const [id] = (await params).post;
-  const article = await getPostByID(translator.toUUID(id));
+  const id = (await params).post[2];
+  const article = await getPostByID(id);
 
   return {
     title: article.title,
@@ -25,7 +22,7 @@ export default async function ArticlesByLevel({ params }: {
     notFound();
   }
 
-  const article = await getPostByID(translator.toUUID(id));
+  const article = await getPostByID(id);
 
   if (!article) {
     notFound();

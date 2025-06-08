@@ -1,8 +1,6 @@
 "server-only"
 
-import { reverseSlug } from '@/utils/slug-generator';
 import { Client } from '@notionhq/client';
-
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const databaseId = process.env.NOTION_DATABASE_ID!;

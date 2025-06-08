@@ -4,7 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, BookOpen, Info } from "lucide-react";
-import { Switch } from "./ui/switch";
+import dynamic from "next/dynamic";
+
+const Switch = dynamic(() => import("./ui/switch"), { ssr: false });
 
 const menuItems = [
   { href: "/reading-progress", label: "Progress", icon: BookOpen },
@@ -45,7 +47,7 @@ export const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6">
-          <MenuMap setIsOpen={setIsOpen} isOpen={isOpen} />
+          <MenuMap setIsOpen={setIsOpen} />
         </div>
 
         {/* Mobile Menu Button */}
@@ -60,7 +62,7 @@ export const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden py-4">
-          <MenuMap setIsOpen={setIsOpen} isOpen={isOpen} />
+          <MenuMap setIsOpen={setIsOpen} />
         </div>
       )}
     </nav>

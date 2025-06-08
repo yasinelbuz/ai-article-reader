@@ -4,7 +4,7 @@ import { useLocalStorage, useMediaQuery } from "@uidotdev/usehooks";
 import { useEffect } from "react";
 import { PrefersColorShemeDark, themeOptions } from "@/config/site";
 
-export const Switch = () => {
+export default function Switch() {
 
     const isDarkMode = useMediaQuery(PrefersColorShemeDark);
     const systemThemePref:string = isDarkMode ? themeOptions.dark : themeOptions.light;

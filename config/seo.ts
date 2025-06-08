@@ -26,4 +26,5 @@ export const GeneralMetadata: Metadata = {
       type: "website",
       images: [{ url: siteConfig.ogImage }],
     },
+    metadataBase: new URL(siteConfig.url),
   };

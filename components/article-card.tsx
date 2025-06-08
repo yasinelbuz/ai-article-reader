@@ -4,7 +4,6 @@ import { MoveRight } from "lucide-react";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { generateSlug } from "@/utils/slug-generator";
 import { ArticleTypes } from "@/types/articles";
-import ShortUniqueId from 'short-uuid'
 
 dayjs.extend(relativeTime);
 

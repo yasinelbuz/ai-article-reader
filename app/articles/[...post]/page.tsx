@@ -7,7 +7,7 @@ import { Metadata } from "next";
 const translator = ShortUniqueId() // veya: require('short-uuid')()
 
 export async function generateMetadata({ params }: { params: Promise<{ post: string }> }): Promise<Metadata> {
-  const [category, title, id] = (await params).post;
+  const [id] = (await params).post;
   const article = await getPostByID(translator.toUUID(id));
 
   return {

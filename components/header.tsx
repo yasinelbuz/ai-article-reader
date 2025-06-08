@@ -16,7 +16,7 @@ type MenuMapProps = {
   isOpen: boolean;
 }
 
-const MenuMap = ({ setIsOpen, isOpen }: MenuMapProps) => (
+const MenuMap = ({ setIsOpen }: MenuMapProps) => (
   <>
     <Switch />
     {menuItems.map((item) => (

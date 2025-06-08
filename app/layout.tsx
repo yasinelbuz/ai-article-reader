@@ -20,7 +20,7 @@ export default function RootLayout({
   children,
 }: GeneralLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" className="black">
       <Head />
       <body className={inter.className}>
         <Navbar />

@@ -1,22 +1,36 @@
 import { notFound } from "next/navigation";
 import BackButton from "@/components/back-button";
-import { getPostByTitleAndCategory } from "@/services/articles";
+import { getPostByID } from "@/services/articles";
+import ShortUniqueId from 'short-uuid'
+import { Metadata } from "next";
+
+const translator = ShortUniqueId() // veya: require('short-uuid')()
+
+export async function generateMetadata({ params }: { params: Promise<{ post: string }> }): Promise<Metadata> {
+  const [category, title, id] = (await params).post;
+  const article = await getPostByID(translator.toUUID(id));
+
+  return {
+    title: article.title,
+    description: article.content_summary,
+  };
+}
 
 export default async function ArticlesByLevel({ params }: {
   params: Promise<{ post: string }>
 }) {
-  const [category, title] = (await params).post;
+  const [category, title, id] = (await params).post;
 
-  if (!category || !title) {
+  if (!category || !title || !id) {
     notFound();
   }
 
-  const article = await getPostByTitleAndCategory(title, category);
+  const article = await getPostByID(translator.toUUID(id));
 
   if (!article) {
     notFound();
   }
-  
+
   return (
     <div className="min-h-screen md:p-16 p-6">
       <div className="font-sans">
@@ -37,12 +51,12 @@ export default async function ArticlesByLevel({ params }: {
       </span>
     </div>
 
-    <div className="rounded-2xl shadow-xl">
-      <h1 className="text-3xl md:text-7xl font-bold mb-6 text-white leading-snug">
+    <div>
+      <h1 className="text-3xl md:text-7xl font-bold mb-6 leading-snug">
         {article?.title}
       </h1>
 
-      <p className="text-gray-200 text-lg md:text-4xl/[3.5rem] whitespace-pre-line">
+      <p className="text-lg md:text-4xl/[3.5rem] whitespace-pre-line">
        {article?.content}
       </p>
     </div>

@@ -1,6 +1,12 @@
 import { SiteConfig } from "@/types";
 
 const site_url = process.env.NEXT_PUBLIC_APP_URL;
+export const PrefersColorShemeDark = "(prefers-color-scheme: dark)";
+
+export const themeOptions = {
+    light: "light",
+    dark: "dark",
+}
 
 export const siteConfig: SiteConfig = {
   name: "ReadNow",

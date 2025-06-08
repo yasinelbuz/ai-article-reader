@@ -8,13 +8,13 @@ export const metadata: Metadata = {
 
 export default function AboutContainer() {
   return (
-    <div className="bg-[#0A0A0B] text-white">
+    <div>
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <h1 className="text-4xl font-bold mb-8">About ReadNow</h1>
 
-        <div className="space-y-8 text-gray-300">
+        <div className="space-y-8">
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">
+            <h2 className="text-2xl font-semibold mb-4">
               Our Mission
             </h2>
             <p>
@@ -25,7 +25,7 @@ export default function AboutContainer() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">
+            <h2 className="text-2xl font-semibold mb-4">
               How It Works
             </h2>
             <ul className="list-disc pl-6 space-y-2">
@@ -40,7 +40,7 @@ export default function AboutContainer() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-white mb-4">Features</h2>
+            <h2 className="text-2xl font-semibold mb-4">Features</h2>
             <ul className="list-disc pl-6 space-y-2">
               <li>
                 Three difficulty levels: Beginner, Intermediate, and Advanced

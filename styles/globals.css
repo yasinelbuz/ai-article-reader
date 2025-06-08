@@ -4,21 +4,24 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: black;
   --navbar-height: 80px;
   --primary-offset: 1rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
+}
+
+html.light {
+  --background: #ffffff;
+  --foreground: black;
+}
+
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @layer utilities {

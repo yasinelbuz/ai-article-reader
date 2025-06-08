@@ -13,7 +13,6 @@ const menuItems = [
 
 type MenuMapProps = {
   setIsOpen: (value: boolean) => void;
-  isOpen: boolean;
 }
 
 const MenuMap = ({ setIsOpen }: MenuMapProps) => (

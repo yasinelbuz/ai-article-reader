@@ -32,4 +32,11 @@ export const siteText = {
     description: "Oops! The page you're looking for doesn't exist or has been moved.",
     returnHomeButton: "Return Home",
   },
+  post: {
+    readingTime: "Reading time",
+    minutes: "minutes",
+    seconds: "seconds",
+    minutesAndSeconds: "minutes and seconds",
+    
+  }
 }

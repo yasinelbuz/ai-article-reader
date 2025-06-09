@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import BackButton from "@/components/back-button";
 import { getPostByID } from "@/services/articles";
 import { Metadata } from "next";
+import { calculateReadingTime } from "@/utils/calculate-reading-time";
+import { siteText } from "@/config/site";
 
 export async function generateMetadata({ params }: { params: Promise<{ post: string }> }): Promise<Metadata> {
   const id = (await params).post[2];
@@ -43,8 +45,14 @@ export default async function ArticlesByLevel({ params }: {
             : "bg-red-500"
         }`}
       ></span>
-      <span className="uppercase text-sm tracking-widest text-gray-400">
+      <span className="first-letter:uppercase text-sm tracking-widest text-gray-400">
         {category}
+      </span>
+
+      -
+
+      <span className="text-sm text-gray-400">
+        {siteText.post.readingTime} {calculateReadingTime(article?.content)}
       </span>
     </div>
 

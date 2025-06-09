@@ -17,7 +17,6 @@ export default function Switch() {
     useEffect(() => {
         document.documentElement.classList.remove("dark", "light");
         document.documentElement.classList.add(theme);
-        console.log(theme);
     }, [theme]);
 
   return (

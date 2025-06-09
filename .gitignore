@@ -43,3 +43,6 @@ next-env.d.ts
 # Logs
 logs
 *.log
+
+# todo
+todo.md

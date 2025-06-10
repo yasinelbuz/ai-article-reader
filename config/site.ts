@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
   name: 'ReadNow',
   description: 'Learn English with interesting articles',
   url: site_url?.toString() || '',
-  ogImage: `${site_url?.toString() || ''}/og.jpg`,
+  ogImage: `${site_url?.toString() || ''}/og.png`,
   mailSupport: 'yasinelbuz@gmail.com',
   authors: [{ name: 'Yasin Elbüz' }],
 };

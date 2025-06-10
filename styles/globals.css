@@ -43,3 +43,55 @@ html.dark {
 mark {
   background-color: yellow;
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #print-area,
+  #print-area * {
+    visibility: visible;
+  }
+
+  #print-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  @page {
+    margin: 20mm;
+  }
+
+  footer::after {
+    content: 'Sayfa ' counter(page);
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  body {
+    font-family: 'Times New Roman', serif;
+    font-size: 14px;
+    color: black;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: black;
+    font-weight: bold;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  button,
+  nav,
+  footer {
+    display: none !important;
+  }
+}

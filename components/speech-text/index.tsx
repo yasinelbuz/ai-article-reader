@@ -1,6 +1,6 @@
 'use client';
 
-import { Pause, Play, StopCircle } from 'lucide-react';
+import { Pause, Play, Printer, StopCircle } from 'lucide-react';
 import { useSpeech } from 'react-text-to-speech';
 import Button from '../ui/button';
 
@@ -20,7 +20,7 @@ export default function SpeechText({ article }: { article: string }) {
 
   return (
     <div style={{ whiteSpace: 'pre-wrap' }}>
-      <div className="flex items-center gap-2 dark:bg-gray-800 bg-gray-200 rounded-xl p-2 mb-12">
+      <div className="flex items-center gap-2 flex-wrap dark:bg-gray-800 bg-gray-200 rounded-xl p-2 mb-12">
         <Button
           disabled={speechStatus === 'started'}
           onClick={start}
@@ -48,8 +48,14 @@ export default function SpeechText({ article }: { article: string }) {
           <StopCircle />
           <span>Stop</span>
         </Button>
+        <Button onClick={() => window.print()} variant="dark" className="flex items-center gap-2">
+          <Printer />
+          Yazdır / PDF Olarak Kaydet
+        </Button>
       </div>
-      <Text />
+      <div id="print-area">
+        <Text />
+      </div>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import { calculateReadingTime } from '@/utils/calculate-reading-time';
@@ -43,6 +44,31 @@ export default function ContainerPost({ article, category }: ContainerPostProps)
         <p className="text-lg md:text-4xl/[3.5rem] whitespace-pre-line">
           <SpeechText article={article?.content} />
         </p>
+      </div>
+
+      <div className="flex items-center gap-2 mt-12">
+        <Button variant="gradientPurplePink" className="flex items-center gap-2">
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              'ReadNow: ' + article?.title
+            )}&url=${encodeURIComponent(window.location.href)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Twitter'da Paylaş
+          </a>
+        </Button>
+        <Button variant="gradientRedYellow" className="flex items-center gap-2">
+          <a
+            href={`https://web.whatsapp.com/send/?text=${encodeURIComponent(
+              'ReadNow: ' + article?.title + ' ' + window.location.href
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp'ta Paylaş
+          </a>
+        </Button>
       </div>
     </div>
   );

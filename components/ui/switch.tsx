@@ -1,22 +1,13 @@
 'use client';
 
-import { useLocalStorage, useMediaQuery } from '@uidotdev/usehooks';
-import { useEffect } from 'react';
-import { PrefersColorShemeDark, themeOptions } from '@/config/site';
+import { useTheme } from 'next-themes';
 
 export default function Switch() {
-  const isDarkMode = useMediaQuery(PrefersColorShemeDark);
-  const systemThemePref: string = isDarkMode ? themeOptions.dark : themeOptions.light;
-  const [theme, saveTheme] = useLocalStorage('theme', systemThemePref);
+  const { theme, setTheme } = useTheme();
 
   const handleToggle = () => {
-    saveTheme(theme === themeOptions.light ? themeOptions.dark : themeOptions.light);
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
-
-  useEffect(() => {
-    document.documentElement.classList.remove('dark', 'light');
-    document.documentElement.classList.add(theme);
-  }, [theme]);
 
   return (
     <label className="inline-flex items-center cursor-pointer select-none">

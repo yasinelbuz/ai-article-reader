@@ -6,6 +6,7 @@ import { inter } from '@/config/fonts';
 import '@/styles/globals.css';
 import { Navbar } from '@/components/header';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
+import { ThemeProvider } from 'next-themes';
 
 export const metadata: Metadata = GeneralMetadata;
 
@@ -19,13 +20,20 @@ const Head = () => {
 
 export default function RootLayout({ children }: GeneralLayoutProps) {
   return (
-    <html lang="en" className="black">
+    <html lang="en" suppressHydrationWarning>
       <Head />
       <body className={inter.className}>
-        <Navbar />
-        {children}
-        <AnalyticsWrapper />
-        <TailwindIndicator />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+          <AnalyticsWrapper />
+          <TailwindIndicator />
+        </ThemeProvider>
       </body>
     </html>
   );

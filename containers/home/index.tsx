@@ -20,7 +20,7 @@ type HomeContainerTypes = {
 
 const initialSelectedLevelAndReadStatusValue = 'all';
 
-const mainClass = 'px-12 py-16 2xl 4xl:container 4xl:mx-auto';
+const mainClass = 'px-6 md:px-12 py-16 2xl 4xl:container 4xl:mx-auto';
 const mainInlineClass = 'flex flex-col gap-4 my-8';
 const articleCountClass = 'flex items-center text-sm text-gray-400';
 const articleGridClass =

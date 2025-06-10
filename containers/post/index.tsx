@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import { calculateReadingTime } from '@/utils/calculate-reading-time';
@@ -10,6 +9,8 @@ import Button from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Divider } from '@/components/ui/divider';
 import { useNavigation } from '@/hooks/useBackNavigation';
+import AnalyzSection from './analyz-section';
+import ShareButtons from './share-buttons';
 
 interface ContainerPostProps {
   article: ArticleTypes;
@@ -46,30 +47,9 @@ export default function ContainerPost({ article, category }: ContainerPostProps)
         </p>
       </div>
 
-      <div className="flex items-center gap-2 mt-12">
-        <Button variant="gradientPurplePink" className="flex items-center gap-2">
-          <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-              'ReadNow: ' + article?.title
-            )}&url=${encodeURIComponent(window.location.href)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Twitter'da Paylaş
-          </a>
-        </Button>
-        <Button variant="gradientRedYellow" className="flex items-center gap-2">
-          <a
-            href={`https://web.whatsapp.com/send/?text=${encodeURIComponent(
-              'ReadNow: ' + article?.title + ' ' + window.location.href
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WhatsApp'ta Paylaş
-          </a>
-        </Button>
-      </div>
+      <AnalyzSection article={article?.content} />
+
+      <ShareButtons title={article?.title} />
     </div>
   );
 }

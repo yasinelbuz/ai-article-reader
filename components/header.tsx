@@ -38,7 +38,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="backdrop-blur-sm border-b dark:border-gray-800 border-gray-200">
+    <nav className="backdrop-blur-lg border-b dark:border-gray-800 border-gray-200 sticky top-0 z-50">
       <div className="flex items-center justify-between h-[var(--navbar-height)] px-[var(--primary-offset)]">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/logo.svg" alt="ReadNow" width={32} height={32} />

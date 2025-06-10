@@ -5,6 +5,7 @@ import { AnalyticsWrapper } from "@/components/wrapper/analytics-wrapper";
 import { inter } from "@/config/fonts";
 import "@/styles/globals.css";
 import { Navbar } from "@/components/header";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
 
 export const metadata: Metadata = GeneralMetadata;
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <AnalyticsWrapper />
+        <TailwindIndicator />
       </body>
     </html>
   );

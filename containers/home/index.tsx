@@ -28,10 +28,10 @@ type HomeContainerTypes = {
 
 const initialSelectedLevelAndReadStatusValue = "all"
 
-const mainClass = "px-12 py-16"
+const mainClass = "px-12 py-16 2xl 4xl:container 4xl:mx-auto"
 const mainInlineClass = "flex flex-col gap-4 my-8"
 const articleCountClass = "flex items-center text-sm text-gray-400"
-const articleGridClass = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-6 gap-6"
+const articleGridClass = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-3 gap-6"
 
 export default function HomeContainer({ articles }: HomeContainerTypes) {
   const [selectedLevel, setSelectedLevel] = useState<Level>(initialSelectedLevelAndReadStatusValue);
@@ -43,7 +43,7 @@ export default function HomeContainer({ articles }: HomeContainerTypes) {
   });
 
   return (
-    <main className={mainClass}>
+    <main className={mainClass} >
       <div className={mainInlineClass}>
         <FilterButtons selectedLevel={selectedLevel} setSelectedLevel={setSelectedLevel}/>
         {/* <ReadStatusButtons selectedReadStatus={readStatus} setSelectedReadStatus={setReadStatus}/> */}

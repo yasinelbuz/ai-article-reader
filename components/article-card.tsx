@@ -4,6 +4,7 @@ import { MoveRight } from "lucide-react";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { generateSlug } from "@/utils/slug-generator";
 import { ArticleTypes } from "@/types/articles";
+import Button from "./ui/button";
 
 dayjs.extend(relativeTime);
 
@@ -49,13 +50,13 @@ export default function ArticleCard({ article }: {article: ArticleTypes}) {
         {/* Footer */}
         <Link
           href={`/articles/${generateSlug(article.category)}/${generateSlug(article.title)}/${article.id}`}
-          className="border-t border-gray-900 block bg-black absolute left-0 right-0 bottom-0 hover:bg-red-600"
+          className="block absolute left-0 right-0 bottom-0"
         >
-          <div className="p-4 sticky bottom-0 flex items-center justify-center">
-            <span className="inline-flex items-center gap-3 text-sm font-semibold text-gray-100 transition-colors">
+          <div className="sticky bottom-0 flex items-center justify-center">
+            <Button variant="gradientPurpleBlue" className="w-full h-[50px] flex items-center gap-2 justify-center rounded-tl-[0] rounded-tr-[0]">
               <span>Start Reading</span>
               <MoveRight className="w-4 h-4" />
-            </span>
+            </Button>
           </div>
         </Link>
       </div>

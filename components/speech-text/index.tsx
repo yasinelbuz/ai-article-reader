@@ -9,7 +9,7 @@ export default function SpeechText({ article }: { article: string}) {
 
     return (
       <div style={{ whiteSpace: "pre-wrap" }}>
-        <div className="flex items-center gap-2 dark:bg-gray-800 bg-gray-200 rounded-xl p-2 mb-4">
+        <div className="flex items-center gap-2 dark:bg-gray-800 bg-gray-200 rounded-xl p-2 mb-12">
           <Button disabled={speechStatus === "started"} onClick={start} variant="dark" className="flex items-center gap-2">
             <Play />
             <span>Start</span>

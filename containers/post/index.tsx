@@ -1,6 +1,5 @@
 "use client"
 
-import BackButton from "@/components/back-button";
 import { calculateReadingTime } from "@/utils/calculate-reading-time";
 import { siteText } from "@/config/site";
 
@@ -9,6 +8,7 @@ import { ArticleTypes } from "@/types/articles";
 import Button from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Divider } from "@/components/ui/divider";
+import { useNavigation } from "@/hooks/useBackNavigation";
 
 interface ContainerPostProps {
   article: ArticleTypes;
@@ -18,9 +18,12 @@ interface ContainerPostProps {
 
 
 export default function ContainerPost({article, category}: ContainerPostProps) {
+
+  const { goBack } = useNavigation();
+
   return (
     <div className="md:p-16 p-6">
-        <Button className="flex items-center gap-2" variant="alternative">
+        <Button className="flex items-center gap-2 mb-2" variant="alternative" onClick={goBack}>
             <ArrowLeft />
             <span>Back</span>
         </Button>

@@ -2,11 +2,9 @@
 
 import React, { useState } from "react";
 import ArticleCard from "@/components/article-card";
-import { filterButtons, readStatusButtons } from "@/config/links";
-import { Level, ReadStatus } from "@/types";
+import { filterButtons } from "@/config/links";
+import { Level } from "@/types";
 import { ArticleTypes } from "@/types/articles";
-import { cn } from "@/utils";
-import { Divider } from "@/components/ui/divider";
 import { siteText } from "@/config/site";
 import { generateSlug } from "@/utils/slug-generator";
 import Button from "@/components/ui/button";
@@ -17,10 +15,6 @@ type FilterButtonTypes = {
   setSelectedLevel: (level: Level) => void
 } 
 
-type ReadStatusButtonTypes = {
-  selectedReadStatus: string,
-  setSelectedReadStatus: (readStatus: ReadStatus) => void
-}
 
 type HomeContainerTypes = {
   articles: ArticleTypes[]
@@ -35,7 +29,6 @@ const articleGridClass = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid
 
 export default function HomeContainer({ articles }: HomeContainerTypes) {
   const [selectedLevel, setSelectedLevel] = useState<Level>(initialSelectedLevelAndReadStatusValue);
-  const [readStatus, setReadStatus] = useState<ReadStatus>(initialSelectedLevelAndReadStatusValue);
 
   const filteredArticles:ArticleTypes[] = articles.filter((article: ArticleTypes) => {
     if (selectedLevel === initialSelectedLevelAndReadStatusValue) return true;
@@ -77,29 +70,6 @@ const FilterButtons = ({ selectedLevel, setSelectedLevel }: FilterButtonTypes) =
             >
               {button.label}
             </Button>
-          ))}
-        </div>
-  )
-}
-
-const ReadStatusButtons = ({ selectedReadStatus, setSelectedReadStatus }: ReadStatusButtonTypes) => {
-
-  const container = "flex flex-wrap items-center gap-2"
-  const buttonClass = "px-6 py-2.5 rounded-[15px] text-sm font-medium transition-all duration-300"
-
-  return (
-    <div className={container}>
-          {readStatusButtons.map((button) => (
-            <button
-              key={button.id}
-              onClick={() => setSelectedReadStatus(button.id as ReadStatus)}
-              className={cn(buttonClass, 
-                selectedReadStatus === button.id
-                ? "bg-violet-800 text-white shadow-lg"
-                : "bg-[#1A1A1B] text-gray-400 hover:bg-[#242425] hover:text-violet-400")}
-            >
-              {button.label}
-            </button>
           ))}
         </div>
   )

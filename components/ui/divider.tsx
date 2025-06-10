@@ -1,60 +1,61 @@
-import { cn } from "@/utils";
-import React from "react";
-
+import { cn } from '@/utils';
+import React from 'react';
 
 export type DividerProps = {
-  direction?: "horizontal" | "vertical";
-  thickness?: "thin" | "normal" | "thick" | number; // tailwind veya px
-  color?: "gray" | "red" | "blue" | "green" | string;
+  direction?: 'horizontal' | 'vertical';
+  thickness?: 'thin' | 'normal' | 'thick' | number; // tailwind veya px
+  color?: 'gray' | 'red' | 'blue' | 'green' | string;
   length?: string; // px, %, rem, tailwind class olabilir
   margin?: string; // tailwind classlar veya css değerleri
-  styleType?: "solid" | "dashed" | "dotted";
+  styleType?: 'solid' | 'dashed' | 'dotted';
   className?: string;
   fullLength?: boolean;
 };
 
 const thicknessMap = {
-  thin: "border-t-[1px]",
-  normal: "border-t-[2px]",
-  thick: "border-t-[4px]",
+  thin: 'border-t-[1px]',
+  normal: 'border-t-[2px]',
+  thick: 'border-t-[4px]',
 };
 
 const colorMap = {
-  gray: "border-gray-300",
-  red: "border-red-500",
-  blue: "border-blue-500",
-  green: "border-green-500",
+  gray: 'border-gray-300',
+  red: 'border-red-500',
+  blue: 'border-blue-500',
+  green: 'border-green-500',
 };
 
 const styleTypeMap = {
-  solid: "",
-  dashed: "border-dashed",
-  dotted: "border-dotted",
+  solid: '',
+  dashed: 'border-dashed',
+  dotted: 'border-dotted',
 };
 
 export const Divider: React.FC<DividerProps> = ({
-  direction = "horizontal",
-  thickness = "normal",
-  color = "gray",
-  length = "100%",
+  direction = 'horizontal',
+  thickness = 'normal',
+  color = 'gray',
+  length = '100%',
   margin,
-  styleType = "solid",
+  styleType = 'solid',
   className,
   fullLength = false,
 }) => {
-  const isHorizontal = direction === "horizontal";
+  const isHorizontal = direction === 'horizontal';
 
   const baseThickness =
-    typeof thickness === "number" ? `border-${isHorizontal ? "t" : "l"}-[${thickness}px]` : thicknessMap[thickness] || thicknessMap.normal;
+    typeof thickness === 'number'
+      ? `border-${isHorizontal ? 't' : 'l'}-[${thickness}px]`
+      : thicknessMap[thickness] || thicknessMap.normal;
 
   const baseColor = colorMap[color as keyof typeof colorMap] || `border-[${color}]`;
 
-  const baseStyle = styleTypeMap[styleType] || "";
+  const baseStyle = styleTypeMap[styleType] || '';
 
   // length & margin inline styles fallback için
   const inlineStyles: React.CSSProperties = {
-    width: isHorizontal ? (fullLength ? "100%" : length) : undefined,
-    height: !isHorizontal ? (fullLength ? "100%" : length) : undefined,
+    width: isHorizontal ? (fullLength ? '100%' : length) : undefined,
+    height: !isHorizontal ? (fullLength ? '100%' : length) : undefined,
     margin: margin,
   };
 
@@ -62,11 +63,11 @@ export const Divider: React.FC<DividerProps> = ({
     <div
       aria-hidden="true"
       className={cn(
-        "dark:border-gray-800 border-gray-200",
+        'dark:border-gray-800 border-gray-200',
         baseThickness,
         baseColor,
         baseStyle,
-        isHorizontal ? "border-t" : "border-l",
+        isHorizontal ? 'border-t' : 'border-l',
         className
       )}
       style={inlineStyles}

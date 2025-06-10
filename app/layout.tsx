@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { GeneralMetadata } from "@/config/seo";
-import { GeneralLayoutProps } from "@/types";
-import { AnalyticsWrapper } from "@/components/wrapper/analytics-wrapper";
-import { inter } from "@/config/fonts";
-import "@/styles/globals.css";
-import { Navbar } from "@/components/header";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
+import type { Metadata } from 'next';
+import { GeneralMetadata } from '@/config/seo';
+import { GeneralLayoutProps } from '@/types';
+import { AnalyticsWrapper } from '@/components/wrapper/analytics-wrapper';
+import { inter } from '@/config/fonts';
+import '@/styles/globals.css';
+import { Navbar } from '@/components/header';
+import { TailwindIndicator } from '@/components/tailwind-indicator';
 
 export const metadata: Metadata = GeneralMetadata;
 
@@ -17,9 +17,7 @@ const Head = () => {
   );
 };
 
-export default function RootLayout({
-  children,
-}: GeneralLayoutProps) {
+export default function RootLayout({ children }: GeneralLayoutProps) {
   return (
     <html lang="en" className="black">
       <Head />

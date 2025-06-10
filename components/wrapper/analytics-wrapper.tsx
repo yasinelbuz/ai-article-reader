@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Analytics } from "@vercel/analytics/react";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from '@vercel/analytics/react';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export const AnalyticsWrapper = () => (
   <>

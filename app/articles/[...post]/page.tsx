@@ -1,10 +1,13 @@
-import { notFound } from "next/navigation";
-import { getPostByID } from "@/services/articles";
-import { Metadata } from "next";
-import ContainerPost from "@/containers/post";
+import { notFound } from 'next/navigation';
+import { getPostByID } from '@/services/articles';
+import { Metadata } from 'next';
+import ContainerPost from '@/containers/post';
 
-
-export async function generateMetadata({ params }: { params: Promise<{ post: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ post: string }>;
+}): Promise<Metadata> {
   const id = (await params).post[2];
   const article = await getPostByID(id);
 
@@ -14,9 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ post: str
   };
 }
 
-export default async function ArticlesByLevel({ params }: {
-  params: Promise<{ post: string }>
-}) {
+export default async function ArticlesByLevel({ params }: { params: Promise<{ post: string }> }) {
   const [category, title, id] = (await params).post;
 
   if (!id || !category || !title) {
@@ -29,7 +30,5 @@ export default async function ArticlesByLevel({ params }: {
     notFound();
   }
 
-  return (
-    <ContainerPost article={article} category={category} />
-  );
+  return <ContainerPost article={article} category={category} />;
 }

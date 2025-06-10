@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
-import { Menu, X, BookOpen, Info } from "lucide-react";
-import dynamic from "next/dynamic";
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
+import { Menu, X, BookOpen, Info } from 'lucide-react';
+import dynamic from 'next/dynamic';
 
-const Switch = dynamic(() => import("./ui/switch"), { ssr: false });
+const Switch = dynamic(() => import('./ui/switch'), { ssr: false });
 
 const menuItems = [
-  { href: "/reading-progress", label: "Progress", icon: BookOpen },
-  { href: "/about", label: "About", icon: Info },
+  { href: '/reading-progress', label: 'Progress', icon: BookOpen },
+  { href: '/about', label: 'About', icon: Info },
 ];
 
 type MenuMapProps = {
   setIsOpen: (value: boolean) => void;
-}
+};
 
 const MenuMap = ({ setIsOpen }: MenuMapProps) => (
   <>
     <Switch />
-    {menuItems.map((item) => (
+    {menuItems.map(item => (
       <Link
         key={item.href}
         href={item.href}
@@ -32,7 +32,7 @@ const MenuMap = ({ setIsOpen }: MenuMapProps) => (
       </Link>
     ))}
   </>
-)
+);
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,10 +51,7 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-gray-300"
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        <button className="md:hidden text-gray-300" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>

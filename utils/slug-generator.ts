@@ -12,4 +12,3 @@ export function reverseSlug(slug: string): string {
     .replace(/-/g, ' ') // tireleri boşluğa çevir
     .replace(/\b\w/g, char => char.toUpperCase()); // her kelimenin ilk harfini büyük yap
 }
-

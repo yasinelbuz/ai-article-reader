@@ -6,4 +6,4 @@ export type ArticleTypes = {
   published: string;
   category: string;
   created_time: string;
-}
+};

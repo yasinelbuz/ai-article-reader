@@ -1,7 +1,5 @@
-import NotFoundSection from "@/components/feedback/not-found";
+import NotFoundSection from '@/components/feedback/not-found';
 
 export default function NotFound() {
-  return (
-    <NotFoundSection />
-  );
+  return <NotFoundSection />;
 }

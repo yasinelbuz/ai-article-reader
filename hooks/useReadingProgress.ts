@@ -1,12 +1,9 @@
-"use client";
+'use client';
 
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from './useLocalStorage';
 
 export function useReadingProgress() {
-  const [readArticles, setReadArticles] = useLocalStorage<string[]>(
-    "read_articles",
-    []
-  );
+  const [readArticles, setReadArticles] = useLocalStorage<string[]>('read_articles', []);
 
   const markAsRead = (articleId: string) => {
     if (!readArticles.includes(articleId)) {
@@ -15,7 +12,7 @@ export function useReadingProgress() {
   };
 
   const markAsUnread = (articleId: string) => {
-    setReadArticles(readArticles.filter((id) => id !== articleId));
+    setReadArticles(readArticles.filter(id => id !== articleId));
   };
 
   const isRead = (articleId: string) => {

@@ -48,7 +48,7 @@ export default function ArticleCard({ article }: {article: ArticleTypes}) {
 
         {/* Footer */}
         <Link
-          href={`/articles/${generateSlug(article.category)}/${generateSlug(article.title)}`}
+          href={`/articles/${generateSlug(article.category)}/${generateSlug(article.title)}/${article.id}`}
           className="border-t border-gray-900 block bg-black absolute left-0 right-0 bottom-0 hover:bg-red-600"
         >
           <div className="p-4 sticky bottom-0 flex items-center justify-center">

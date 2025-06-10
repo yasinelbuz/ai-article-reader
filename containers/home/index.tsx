@@ -9,6 +9,7 @@ import { cn } from "@/utils";
 import { Divider } from "@/components/ui/divider";
 import { siteText } from "@/config/site";
 import { generateSlug } from "@/utils/slug-generator";
+import Button from "@/components/ui/button";
 
 
 type FilterButtonTypes = {
@@ -65,21 +66,17 @@ export default function HomeContainer({ articles }: HomeContainerTypes) {
 const FilterButtons = ({ selectedLevel, setSelectedLevel }: FilterButtonTypes) => {
 
   const container = "flex flex-wrap items-center gap-2"
-  const buttonClass = "px-6 py-2.5 rounded-[15px] text-sm font-medium transition-all duration-300"
 
   return (
     <div className={container}>
           {filterButtons.map((button) => (
-            <button
+            <Button
               key={button.id}
               onClick={() => setSelectedLevel(button.id as Level)}
-              className={cn(buttonClass, 
-                selectedLevel === button.id
-                ? "bg-violet-800 text-white shadow-lg"
-                : "bg-[#1A1A1B] text-gray-400 hover:bg-[#242425] hover:text-violet-400")}
+              variant={selectedLevel === button.id ? "default" : "alternative"}
             >
               {button.label}
-            </button>
+            </Button>
           ))}
         </div>
   )

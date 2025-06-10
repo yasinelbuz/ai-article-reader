@@ -62,6 +62,7 @@ export const Divider: React.FC<DividerProps> = ({
     <div
       aria-hidden="true"
       className={cn(
+        "dark:border-gray-800 border-gray-200",
         baseThickness,
         baseColor,
         baseStyle,

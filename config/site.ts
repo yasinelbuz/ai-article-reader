@@ -22,6 +22,7 @@ export const siteText = {
     articleCountLabel: 'articles found',
     allBtn: 'All Articles',
     beginnerBtn: 'Beginner',
+    preBeginnerBtn: 'Pre Beginner',
     intermediateBtn: 'Intermediate',
     advancedBtn: 'Advanced',
     readBtn: 'Read',

@@ -9,6 +9,7 @@ export const links = {
 
 export const filterButtons = [
   { id: 'all', label: siteText.home.allBtn },
+  { id: 'pre-beginner', label: siteText.home.preBeginnerBtn },
   { id: 'beginner', label: siteText.home.beginnerBtn },
   { id: 'intermediate', label: siteText.home.intermediateBtn },
   { id: 'advanced', label: siteText.home.advancedBtn },

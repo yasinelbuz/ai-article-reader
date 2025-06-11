@@ -12,17 +12,17 @@ export default function ArticleCard({ article }: { article: ArticleTypes }) {
   return (
     <div className="h-[350px] text-black bg-white group relative block rounded-[20px] border border-gray-300 transition-all duration-300 hover:shadow-[0_0_50px_0_rgba(0,0,0,0.05)] overflow-hidden">
       <div
-        className={`group-hover:bg-blue-500 group-hover:p-36 transition-all duration-300 absolute top-0 left-0 p-24 rounded-br-full z-[0] ${
-          article.category
-        }`}
+        className={`group-hover:bg-blue-500 group-hover:p-36 transition-all duration-300 absolute top-0 left-0 p-24 rounded-br-full z-[0] ${article.category}`}
       ></div>
       <div className="h-full relative z-1">
         {/* Title & Description */}
         <div className="p-8">
           <Link
-            href={`/articles/${generateSlug(article.category)}/${generateSlug(article.title)}/${article.id}`}
+            href={`/articles/${generateSlug(article.category)}/${generateSlug(article.title)}/${
+              article.id
+            }`}
           >
-            <h1 className="text-[2.8rem] font-extrabold leading-tight tracking-tight">
+            <h1 className="text-[2.8rem] font-extrabold leading-tight tracking-tight line-clamp-2 break-words">
               {article.title}
             </h1>
           </Link>
@@ -49,7 +49,9 @@ export default function ArticleCard({ article }: { article: ArticleTypes }) {
 
         {/* Footer */}
         <Link
-          href={`/articles/${generateSlug(article.category)}/${generateSlug(article.title)}/${article.id}`}
+          href={`/articles/${generateSlug(article.category)}/${generateSlug(article.title)}/${
+            article.id
+          }`}
           className="block absolute left-0 right-0 bottom-0"
         >
           <div className="sticky bottom-0 flex items-center justify-center">

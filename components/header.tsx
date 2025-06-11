@@ -24,7 +24,7 @@ const MenuMap = ({ setIsOpen }: MenuMapProps) => (
       <Link
         key={item.href}
         href={item.href}
-        className="flex items-center gap-2 "
+        className="flex items-center gap-2 py-2 md:py-0 border-t md:border-t-0 border-gray-200 dark:border-gray-800"
         onClick={() => setIsOpen(false)}
       >
         <item.icon className="w-4 h-4" />
@@ -58,7 +58,7 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden py-4">
+        <div className="md:hidden p-8">
           <MenuMap setIsOpen={setIsOpen} />
         </div>
       )}

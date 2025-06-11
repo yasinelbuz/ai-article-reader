@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import React, { useState } from 'react';
@@ -9,7 +8,8 @@ import { ArticleTypes } from '@/types/articles';
 import { siteText } from '@/config/site';
 import { generateSlug } from '@/utils/slug-generator';
 import Button from '@/components/ui/button';
-import useLocalStorage from '@/hooks/use-local-storage';
+import { useLocalStorage, useReadLocalStorage } from 'usehooks-ts';
+import { storage } from '@/config/local-storage-naming';
 
 type FilterButtonTypes = {
   selectedLevel: string;
@@ -29,13 +29,9 @@ const articleGridClass =
   'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-3 gap-6';
 
 export default function HomeContainer({ articles }: HomeContainerTypes) {
-  const [selectedLevelLocalStorage] = useLocalStorage<Level>(
-    'selectedLevel',
-    initialSelectedLevelAndReadStatusValue
-  );
-  const [selectedLevel, setSelectedLevel] = useState<Level>(selectedLevelLocalStorage);
+  const selectedLevelLocalStorage: Level | null = useReadLocalStorage(storage.selectedLevel);
 
-  console.log('selectedLevel', selectedLevel);
+  const [selectedLevel, setSelectedLevel] = useState<Level>(selectedLevelLocalStorage as Level);
 
   const filteredArticles: ArticleTypes[] = articles.filter((article: ArticleTypes) => {
     if (selectedLevel === initialSelectedLevelAndReadStatusValue) return true;
@@ -64,8 +60,9 @@ export default function HomeContainer({ articles }: HomeContainerTypes) {
 
 const FilterButtons = ({ selectedLevel, setSelectedLevel }: FilterButtonTypes) => {
   const container = 'flex flex-wrap items-center gap-2';
-  const [_selectedLevelLocalStorage, setSelectedLevelLocalStorage] = useLocalStorage<Level>(
-    'selectedLevel',
+
+  const [selectedLevelLocalStorage, setSelectedLevelLocalStorage] = useLocalStorage(
+    storage.selectedLevel,
     selectedLevel as Level
   );
 
@@ -80,7 +77,11 @@ const FilterButtons = ({ selectedLevel, setSelectedLevel }: FilterButtonTypes) =
         <Button
           key={button.id}
           onClick={() => handleButtonClick(button.id as Level)}
-          variant={selectedLevel === button.id ? 'gradientPurpleBlue' : 'gradientTealLime'}
+          variant={
+            (selectedLevelLocalStorage || selectedLevel) === button.id
+              ? 'gradientPurpleBlue'
+              : 'gradientTealLime'
+          }
         >
           {button.label}
         </Button>

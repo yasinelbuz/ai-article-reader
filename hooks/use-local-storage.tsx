@@ -7,7 +7,12 @@ const useLocalStorage = <T,>(key: string, initialValue: T): [T, (value: T) => vo
     // Retrieve from localStorage
     const item = window.localStorage.getItem(key);
     if (item) {
-      setStoredValue(JSON.parse(item));
+      // Eğer Level tipindeyse JSON.parse yerine doğrudan kullan
+      if (typeof initialValue === 'string') {
+        setStoredValue(item as unknown as T);
+      } else {
+        setStoredValue(JSON.parse(item));
+      }
     }
   }, [key]);
 
@@ -15,7 +20,12 @@ const useLocalStorage = <T,>(key: string, initialValue: T): [T, (value: T) => vo
     // Save state
     setStoredValue(value);
     // Save to localStorage
-    window.localStorage.setItem(key, JSON.stringify(value));
+    // Eğer Level tipindeyse JSON.stringify yerine doğrudan kullan
+    if (typeof value === 'string') {
+      window.localStorage.setItem(key, value as unknown as string);
+    } else {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    }
   };
   return [storedValue, setValue];
 };

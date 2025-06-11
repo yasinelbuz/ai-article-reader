@@ -33,7 +33,9 @@ export default function HomeContainer({ articles }: HomeContainerTypes) {
     'selectedLevel',
     initialSelectedLevelAndReadStatusValue
   );
-  const [selectedLevel, setSelectedLevel] = useState<Level>(selectedLevelLocalStorage);
+  const [selectedLevel, setSelectedLevel] = useState<Level>(selectedLevelLocalStorage || 'all');
+
+  console.log('selectedLevel', selectedLevel);
 
   const filteredArticles: ArticleTypes[] = articles.filter((article: ArticleTypes) => {
     if (selectedLevel === initialSelectedLevelAndReadStatusValue) return true;

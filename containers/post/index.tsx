@@ -8,9 +8,9 @@ import { ArticleTypes } from '@/types/articles';
 import Button from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { Divider } from '@/components/ui/divider';
-import { useNavigation } from '@/hooks/useBackNavigation';
 import AnalyzSection from './analyz-section';
 import ShareButtons from './share-buttons';
+import { useRouter } from 'next/navigation';
 
 interface ContainerPostProps {
   article: ArticleTypes;
@@ -18,11 +18,14 @@ interface ContainerPostProps {
 }
 
 export default function ContainerPost({ article, category }: ContainerPostProps) {
-  const { goBack } = useNavigation();
-
+  const navigate = useRouter();
   return (
     <div className="md:p-16 p-6">
-      <Button className="flex items-center gap-2 mb-2" variant="alternative" onClick={goBack}>
+      <Button
+        className="flex items-center gap-2 mb-2"
+        variant="alternative"
+        onClick={() => navigate.back()}
+      >
         <ArrowLeft />
         <span>Back</span>
       </Button>

@@ -9,7 +9,7 @@ import { ArticleTypes } from '@/types/articles';
 import { siteText } from '@/config/site';
 import { generateSlug } from '@/utils/slug-generator';
 import Button from '@/components/ui/button';
-import { useLocalStorage } from '@uidotdev/usehooks';
+import useLocalStorage from '@/hooks/use-local-storage';
 
 type FilterButtonTypes = {
   selectedLevel: string;

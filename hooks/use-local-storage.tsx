@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 
 const useLocalStorage = <T,>(key: string, initialValue: T): [T, (value: T) => void] => {
-  const [storedValue, setStoredValue] = useState(initialValue);
+  // İlk olarak localStorage'dan değeri alalım
+  const item = window.localStorage.getItem(key);
+  const initial = item
+    ? typeof initialValue === 'string'
+      ? item
+      : JSON.parse(item)
+    : initialValue;
+
+  const [storedValue, setStoredValue] = useState(initial);
 
   useEffect(() => {
     // Retrieve from localStorage

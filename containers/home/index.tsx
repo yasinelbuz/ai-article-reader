@@ -33,7 +33,7 @@ export default function HomeContainer({ articles }: HomeContainerTypes) {
     'selectedLevel',
     initialSelectedLevelAndReadStatusValue
   );
-  const [selectedLevel, setSelectedLevel] = useState<Level>(selectedLevelLocalStorage || 'all');
+  const [selectedLevel, setSelectedLevel] = useState<Level>(selectedLevelLocalStorage);
 
   console.log('selectedLevel', selectedLevel);
 

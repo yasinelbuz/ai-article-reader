@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ArticleCard from '@/components/article-card';
 import { filterButtons } from '@/config/links';
 import { Level } from '@/types';
@@ -22,8 +23,8 @@ type HomeContainerTypes = {
 
 const initialSelectedLevelAndReadStatusValue = 'all';
 
-const mainClass = 'px-6 md:px-12 py-16 2xl 4xl:container 4xl:mx-auto';
-const mainInlineClass = 'flex flex-col gap-4 my-8';
+const mainClass = 'md:p-16 p-6 4xl:container 4xl:mx-auto';
+const mainInlineClass = 'flex flex-col gap-4 mb-16';
 const articleCountClass = 'flex items-center text-sm text-gray-400';
 const articleGridClass =
   'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-3 gap-6';
@@ -31,7 +32,9 @@ const articleGridClass =
 export default function HomeContainer({ articles }: HomeContainerTypes) {
   const selectedLevelLocalStorage: Level | null = useReadLocalStorage(storage.selectedLevel);
 
-  const [selectedLevel, setSelectedLevel] = useState<Level>(selectedLevelLocalStorage as Level);
+  const [selectedLevel, setSelectedLevel] = useState<Level>(
+    selectedLevelLocalStorage || (initialSelectedLevelAndReadStatusValue as Level)
+  );
 
   const filteredArticles: ArticleTypes[] = articles.filter((article: ArticleTypes) => {
     if (selectedLevel === initialSelectedLevelAndReadStatusValue) return true;

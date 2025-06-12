@@ -40,7 +40,7 @@ export default function ContainerPost({ article, category }: ContainerPostProps)
         </div>
 
         <div>
-          <h1 className="text-3xl md:text-7xl/[6rem] font-extrabold mb-6 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-7xl/[6rem] font-extrabold mb-6 bg-gradient-to-r dark:selection:bg-blue-600 dark:selection:text-white from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
             {article?.title}
           </h1>
 

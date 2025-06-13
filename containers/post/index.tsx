@@ -9,8 +9,8 @@ import ShareButtons from './share-buttons';
 import { useRouter } from 'next/navigation';
 import InfoTranslate from './info-translate';
 import { useReadLocalStorage } from 'usehooks-ts';
-import { storage } from '@/config/local-storage-naming';
 import TranslationPopup from './translate';
+import { storage } from '@/config/constants';
 
 interface ContainerPostProps {
   article: ArticleTypes;

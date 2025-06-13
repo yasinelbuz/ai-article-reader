@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import Button from '@/components/ui/button';
 import { Info, X } from 'lucide-react';
 import { useLocalStorage } from 'usehooks-ts';
-import { storage } from '@/config/local-storage-naming';
+import { storage } from '@/config/constants';
 import { isMobile, isTablet } from 'react-device-detect';
+import { EXTENSIONS_LINKS } from '@/config/links';
 
 export default function Alert() {
   const [extensionUrl, setExtensionUrl] = useState<string | null>(null);
@@ -20,20 +21,16 @@ export default function Alert() {
     const userAgent = navigator.userAgent;
 
     if (userAgent.includes('Firefox')) {
-      setExtensionUrl('https://addons.mozilla.org/en-US/firefox/addon/to-google-translate/');
+      setExtensionUrl(EXTENSIONS_LINKS.firefox);
       setBrowserName('Mozilla Firefox');
     } else if (userAgent.includes('Edg')) {
-      setExtensionUrl(
-        'https://microsoftedge.microsoft.com/addons/detail/kkmlkkjojmombglmlpbpapmhcaljjkde'
-      );
+      setExtensionUrl(EXTENSIONS_LINKS.edge);
       setBrowserName('Microsoft Edge');
     } else if (userAgent.includes('Chrome')) {
-      setExtensionUrl(
-        'https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb'
-      );
+      setExtensionUrl(EXTENSIONS_LINKS.chrome);
       setBrowserName('Google Chrome');
     } else if (userAgent.includes('Safari')) {
-      setExtensionUrl('https://apps.apple.com/us/app/translate-tab/id458725185');
+      setExtensionUrl(EXTENSIONS_LINKS.safari);
       setBrowserName('Safari');
     } else {
       setExtensionUrl(null);

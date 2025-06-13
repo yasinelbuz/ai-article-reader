@@ -1,3 +1,4 @@
+import { MAXIMUM_NUMBER_OF_WORDS_TO_BE_TRANSLATED } from '@/config/constants';
 import { useState, useEffect, useRef } from 'react';
 
 export default function TranslationPopup() {
@@ -6,8 +7,6 @@ export default function TranslationPopup() {
   const [showPopup, setShowPopup] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
   const [translateLoading, setTranslateLoading] = useState(false);
-
-  const MAX_TRANSLATE_WORDS = 20;
 
   // Close popup when clicking outside
   useEffect(() => {
@@ -61,7 +60,7 @@ export default function TranslationPopup() {
       const selected = window.getSelection()?.toString().trim();
       const selected_count = selected?.length;
       if (selected && selected !== selection) {
-        if (!selected_count || selected_count > MAX_TRANSLATE_WORDS) {
+        if (!selected_count || selected_count > MAXIMUM_NUMBER_OF_WORDS_TO_BE_TRANSLATED) {
           return;
         }
         setSelection(selected);

@@ -6,7 +6,7 @@ export default function Switch() {
   const { theme, setTheme, systemTheme } = useTheme();
 
   const handleToggle = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(themeValue === 'dark' ? 'light' : 'dark');
   };
 
   const themeValue = theme === 'system' ? systemTheme : theme;

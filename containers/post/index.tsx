@@ -11,7 +11,6 @@ import InfoTranslate from './info-translate';
 import { useReadLocalStorage } from 'usehooks-ts';
 import { storage } from '@/config/local-storage-naming';
 import TranslationPopup from './translate';
-import { isMobile, isTablet } from 'react-device-detect';
 
 interface ContainerPostProps {
   article: ArticleTypes;
@@ -24,7 +23,7 @@ export default function ContainerPost({ article, category }: ContainerPostProps)
 
   return (
     <>
-      {(isMobile || isTablet) && <TranslationPopup />}
+      <TranslationPopup />
       {Boolean(isOpenAlertLocalStorage) || (!isOpenAlertLocalStorage && <InfoTranslate />)}
       <div className="md:p-16 p-6">
         <div className="flex items-center gap-2 mb-2">

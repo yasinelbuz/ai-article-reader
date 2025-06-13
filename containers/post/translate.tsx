@@ -41,31 +41,32 @@ export default function TranslationPopup() {
   // Get theme from local storage or use dark as default
   const theme = localStorage.getItem('theme') === 'light' ? lightTheme : darkTheme;
 
-  // Get position of selected text
-  const getPosition = () => {
-    const range = window.getSelection()?.getRangeAt(0);
-    if (!range) return { top: 0, left: 0 };
+  // Header styles
+  const headerStyles = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1000,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    padding: '0.5rem 1rem',
+    color: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
+  } as const;
 
-    const rect = range.getBoundingClientRect();
-    const popupWidth = 200; // Estimated width
-    const popupHeight = 150; // Estimated height
-
-    // Position popup above the selected text
-    let top = rect.top + window.scrollY - popupHeight;
-    let left = rect.left + window.scrollX;
-
-    // Adjust position if popup would be out of viewport
-    if (top < 0) {
-      top = rect.top + window.scrollY + 10;
-    }
-    if (left + popupWidth > window.innerWidth) {
-      left = window.innerWidth - popupWidth;
-    }
-
-    return { top, left };
-  };
-
-  const position = getPosition();
+  // Popup styles
+  const popupStyles = {
+    backgroundColor: theme.backgroundColor,
+    color: theme.textColor,
+    padding: '1rem',
+    borderRadius: '8px',
+    boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
+    width: '100%',
+    border: `1px solid ${theme.borderColor}`,
+    pointerEvents: 'auto',
+  } as const;
 
   // Close popup when clicking outside
   useEffect(() => {
@@ -148,55 +149,44 @@ export default function TranslationPopup() {
   if (!showPopup) return null;
 
   return (
-    <div
-      ref={popupRef}
-      style={{
-        position: 'fixed',
-        top: position.top,
-        left: position.left,
-        zIndex: 1000,
-        backgroundColor: theme.backgroundColor,
-        color: theme.textColor,
-        padding: '1rem',
-        borderRadius: '8px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
-        minWidth: '200px',
-        border: `1px solid ${theme.borderColor}`,
-      }}
-    >
-      <div style={{ marginBottom: '1rem' }}>
-        <select
-          value={`${selectedPair.from}-${selectedPair.to}`}
-          onChange={e => {
-            const [from, to] = e.target.value.split('-');
-            const pair = languagePairs.find(p => p.from === from && p.to === to);
-            if (pair) setSelectedPair(pair);
-          }}
-          style={{
-            width: '100%',
-            padding: '0.5rem',
-            borderRadius: '4px',
-            border: `1px solid ${theme.borderColor}`,
-            backgroundColor: theme.backgroundColor,
-            color: theme.textColor,
-          }}
-        >
-          {languagePairs.map(pair => (
-            <option key={pair.from + pair.to} value={`${pair.from}-${pair.to}`}>
-              {pair.label}
-            </option>
-          ))}
-        </select>
-      </div>
+    <div style={headerStyles}>
+      <div ref={popupRef} style={popupStyles}>
+        <div style={{ marginBottom: '1rem' }}>
+          <select
+            value={`${selectedPair.from}-${selectedPair.to}`}
+            onChange={e => {
+              const [from, to] = e.target.value.split('-');
+              const pair = languagePairs.find(p => p.from === from && p.to === to);
+              if (pair) setSelectedPair(pair);
+            }}
+            style={{
+              width: '100%',
+              padding: '0.5rem',
+              borderRadius: '4px',
+              border: `1px solid ${theme.borderColor}`,
+              backgroundColor: theme.backgroundColor,
+              color: theme.textColor,
+            }}
+          >
+            {languagePairs.map(pair => (
+              <option key={pair.from + pair.to} value={`${pair.from}-${pair.to}`}>
+                {pair.label}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <div style={{ marginBottom: '1rem' }}>
-        <strong style={{ color: theme.textColor }}>Original:</strong>
-        <p style={{ margin: '0.5rem 0', color: theme.textColor }}>{selection}</p>
-      </div>
+        <div className="flex flex gap-2">
+          <div>
+            <strong style={{ color: theme.textColor }}>Original</strong>
+            <p style={{ margin: '0.5rem 0', color: theme.textColor }}>{selection}</p>
+          </div>
 
-      <div>
-        <strong style={{ color: theme.textColor }}>Translation:</strong>
-        <p style={{ margin: '0.5rem 0', color: theme.textColor }}>{translation}</p>
+          <div>
+            <strong style={{ color: theme.textColor }}>Translation</strong>
+            <p style={{ margin: '0.5rem 0', color: theme.textColor }}>{translation}</p>
+          </div>
+        </div>
       </div>
     </div>
   );

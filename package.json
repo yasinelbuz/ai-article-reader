@@ -22,6 +22,7 @@
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.0.0",
     "react-text-to-speech": "^2.0.3",
+    "react-tooltip": "^5.29.0",
     "server-only": "^0.0.1",
     "short-uuid": "^5.2.0",
     "tailwind-merge": "^3.3.0",

@@ -5,6 +5,7 @@ import Button from '@/components/ui/button';
 import { Info, X } from 'lucide-react';
 import { useLocalStorage } from 'usehooks-ts';
 import { storage } from '@/config/local-storage-naming';
+import { isMobile, isTablet } from 'react-device-detect';
 
 export default function Alert() {
   const [extensionUrl, setExtensionUrl] = useState<string | null>(null);
@@ -44,7 +45,14 @@ export default function Alert() {
     setIsOpenAlertLocalStorage(false);
   };
 
-  if (!isOpenAlertLocalStorage || !isOpen) {
+  if (
+    !isOpenAlertLocalStorage ||
+    !isOpen ||
+    !extensionUrl ||
+    !browserName ||
+    isMobile ||
+    isTablet
+  ) {
     return null;
   }
 

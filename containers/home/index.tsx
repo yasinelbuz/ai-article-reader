@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ArticleCard from '@/components/article-card';
 import { filterButtons } from '@/config/links';
 import { Level } from '@/types';
@@ -10,7 +9,7 @@ import { siteText } from '@/config/site';
 import { generateSlug } from '@/utils/slug-generator';
 import Button from '@/components/ui/button';
 import { useLocalStorage, useReadLocalStorage } from 'usehooks-ts';
-import { storage } from '@/config/local-storage-naming';
+import { storage } from '@/config/constants';
 
 type FilterButtonTypes = {
   selectedLevel: string;

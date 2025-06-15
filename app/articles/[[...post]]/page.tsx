@@ -18,7 +18,7 @@ export async function generateMetadata({
 }
 
 export default async function ArticlesByLevel({ params }: { params: Promise<{ post: string }> }) {
-  const [category, title, id] = (await params).post;
+  const [category, title, id] = (await params).post || [];
 
   if (!id || !category || !title) {
     notFound();

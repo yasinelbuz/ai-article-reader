@@ -11,4 +11,5 @@ export const themeOptions = {
 export const storage = {
   selectedLevel: 'selectedLevel',
   isOpenAlert: 'isOpenAlert',
+  note: 'note',
 };

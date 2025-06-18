@@ -107,7 +107,10 @@ export default function TranslationPopup() {
   if (!showPopup) return null;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[9999] bg-purple-500 justify-center p-8">
+    <div
+      ref={popupRef}
+      className="fixed top-0 left-0 right-0 z-[9999] bg-purple-500 justify-center p-8"
+    >
       {translateLoading ? (
         <p className="text-white text-2xl first-letter:uppercase whitespace-pre-line font-medium">
           Loading...

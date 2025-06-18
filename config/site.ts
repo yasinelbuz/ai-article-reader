@@ -2,7 +2,7 @@ import { SiteConfig } from '@/types';
 import { site_url } from './constants';
 
 export const siteConfig: SiteConfig = {
-  name: 'ReadNow',
+  name: 'A lot of articles',
   description: 'Learn English with interesting articles',
   url: site_url?.toString() || '',
   ogImage: `${site_url?.toString() || ''}/og.png`,

@@ -6,7 +6,6 @@ import AnalyzSection from './analyz-section';
 import ShareButtons from './share-buttons';
 import InfoTranslate from './info-translate';
 import { useReadLocalStorage } from 'usehooks-ts';
-import TranslationPopup from './translate';
 import { storage } from '@/config/constants';
 import NavigateHeader from './navigate';
 import TakeNote from './take-note';
@@ -21,7 +20,6 @@ export default function ContainerPost({ article, category }: ContainerPostProps)
 
   return (
     <>
-      <TranslationPopup />
       {Boolean(isOpenAlertLocalStorage) || (!isOpenAlertLocalStorage && <InfoTranslate />)}
       <div className="md:p-16 p-6">
         <NavigateHeader category={category} />

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, X, BookOpen, Info } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import { siteConfig } from '@/config/site';
 
 const Switch = dynamic(() => import('./ui/switch'), { ssr: false });
 
@@ -41,8 +42,10 @@ export const Navbar = () => {
     <nav className="backdrop-blur-lg border-b dark:border-gray-800 border-gray-200 sticky top-0 z-50">
       <div className="flex items-center justify-between h-[var(--navbar-height)] px-[var(--primary-offset)]">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.svg" alt="ReadNow" width={32} height={32} />
-          <span className="text-xl font-bold dark:text-white text-black">ReadNow</span>
+          <Image src="/logo.svg" alt={siteConfig.name} width={32} height={32} />
+          <div className="text-xl font-bold dark:text-white text-black">
+            <span className="text-gray-400">{siteConfig.name}</span>
+          </div>
         </Link>
 
         {/* Desktop Menu */}

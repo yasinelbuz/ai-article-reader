@@ -1,3 +1,4 @@
+import { cn } from '@/utils';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 
 export type ButtonVariant =
@@ -76,7 +77,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         disabled={props.disabled}
         ref={ref}
-        className={`${baseStyles} ${variantStyles[variant]} ${className}`}
+        className={cn(baseStyles, variantStyles[variant], className)}
         {...props}
       />
     );

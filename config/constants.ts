@@ -12,4 +12,5 @@ export const storage = {
   selectedLevel: 'selectedLevel',
   isOpenAlert: 'isOpenAlert',
   note: 'note',
+  readListId: 'readListId',
 };

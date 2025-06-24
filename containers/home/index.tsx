@@ -31,6 +31,8 @@ const articleGridClass =
 export default function HomeContainer({ articles }: HomeContainerTypes) {
   const selectedLevelLocalStorage: Level | null = useReadLocalStorage(storage.selectedLevel);
 
+  const isReadLocalStorage = useReadLocalStorage<string[]>(storage.readListId);
+
   const [selectedLevel, setSelectedLevel] = useState<Level>(
     selectedLevelLocalStorage || (initialSelectedLevelAndReadStatusValue as Level)
   );
@@ -44,7 +46,6 @@ export default function HomeContainer({ articles }: HomeContainerTypes) {
     <main className={mainClass}>
       <div className={mainInlineClass}>
         <FilterButtons selectedLevel={selectedLevel} setSelectedLevel={setSelectedLevel} />
-        {/* <ReadStatusButtons selectedReadStatus={readStatus} setSelectedReadStatus={setReadStatus}/> */}
 
         <div className={articleCountClass}>
           {filteredArticles.length} {siteText.home.articleCountLabel}
@@ -53,7 +54,11 @@ export default function HomeContainer({ articles }: HomeContainerTypes) {
 
       <div className={articleGridClass}>
         {filteredArticles.map((article: ArticleTypes) => (
-          <ArticleCard key={article.id} article={article} />
+          <ArticleCard
+            key={article.id}
+            article={article}
+            isReadLocalStorageList={isReadLocalStorage || []}
+          />
         ))}
       </div>
     </main>

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import ArticleCard from '@/components/article-card';
 import { filterButtons } from '@/config/links';
 import { Level } from '@/types';
 import { ArticleTypes } from '@/types/articles';
@@ -10,6 +9,9 @@ import { generateSlug } from '@/utils/slug-generator';
 import Button from '@/components/ui/button';
 import { useLocalStorage, useReadLocalStorage } from 'usehooks-ts';
 import { storage } from '@/config/constants';
+import dynamic from 'next/dynamic';
+
+const ArticleCard = dynamic(() => import('@/components/article-card'), { ssr: false });
 
 type FilterButtonTypes = {
   selectedLevel: string;

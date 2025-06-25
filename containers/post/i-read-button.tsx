@@ -25,7 +25,7 @@ export default function IReadButton({ id }: { id: string }) {
     <Button
       variant={isRead ? 'gradientCyanBlue' : 'gradientPinkOrange'}
       disabled={!readList}
-      className="mt-6 flex items-center gap-2"
+      className="mt-6 flex items-center gap-2 w-full h-24 text-center"
       onClick={handleToggleReadStatus}
     >
       {isRead ? (

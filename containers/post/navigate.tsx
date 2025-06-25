@@ -20,15 +20,19 @@ export default function NavigateHeader({ category, id }: { category: string; id:
     <div className="flex items-center gap-2 mb-2">
       <Button
         className="flex items-center gap-2"
-        variant="gradientTealLime"
+        variant="alternative"
         onClick={() => navigate.back()}
       >
         <ArrowLeft />
         <span>Back</span>
       </Button>
 
-      <Button className="flex items-center gap-2" variant="gradientRedYellow">
+      <Button className="flex items-center gap-2" variant="alternative">
         <span className="first-letter:uppercase">{category}</span>
+      </Button>
+
+      <Button className="flex items-center gap-2" variant="gradientRedYellow">
+        <span className="first-letter:uppercase">Makele kelimelerine çalış</span>
       </Button>
 
       <span className={cn('flex items-center gap-2', isRead ? 'flex' : 'hidden')}>

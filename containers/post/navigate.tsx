@@ -31,8 +31,12 @@ export default function NavigateHeader({ category, id }: { category: string; id:
         <span className="first-letter:uppercase">{category}</span>
       </Button>
 
-      <Button className="flex items-center gap-2" variant="gradientRedYellow">
-        <span className="first-letter:uppercase">Makele kelimelerine çalış</span>
+      <Button
+        className="flex items-center gap-2"
+        variant="gradientRedYellow"
+        onClick={() => navigate.push(`/study-words/${id}`)}
+      >
+        <span className="first-letter:uppercase">Study Words</span>
       </Button>
 
       <span className={cn('flex items-center gap-2', isRead ? 'flex' : 'hidden')}>

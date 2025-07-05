@@ -6,7 +6,6 @@ import InfoTranslate from './info-translate';
 import { useReadLocalStorage } from 'usehooks-ts';
 import { storage } from '@/config/constants';
 import NavigateHeader from './navigate';
-import TakeNote from './take-note';
 import IReadButton from './i-read-button';
 
 interface ContainerPostProps {
@@ -35,7 +34,6 @@ export default function ContainerPost({ article, category }: ContainerPostProps)
 
         <IReadButton id={article?.id} />
 
-        <TakeNote id={article?.id} title={article?.title} />
       </div>
     </>
   );

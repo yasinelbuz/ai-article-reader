@@ -54,6 +54,7 @@ const MenuMap = ({ setIsOpen }: MenuMapProps) => {
       <Switch />
       <div className="flex items-center gap-2">
         <Select
+        defaultValue={languageLocalStorageValue as string || 'english'}
           onValueChange={(value: string) => handleLanguageChange(value)}
         >
           <SelectTrigger className="w-[180px]">

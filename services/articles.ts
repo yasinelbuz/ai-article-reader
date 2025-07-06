@@ -10,13 +10,21 @@ function getPlainText(field?: { plain_text?: string }[] | null): string {
   return Array.isArray(field) && field.length > 0 ? field[0]?.plain_text ?? '' : '';
 }
 
-export async function getPosts() {
+export async function getPosts(language: string = 'English') {
   try {
     const response = await notion.databases.query({
       database_id: databaseId,
       filter: {
-        property: 'Published',
-        checkbox: { equals: true },
+        and: [
+          {
+            property: 'Published',
+            checkbox: { equals: true },
+          },
+          {
+            property: 'Language',
+            select: { equals: language.charAt(0).toUpperCase() + language.slice(1).toLowerCase() },
+          },
+        ],
       },
     });
 

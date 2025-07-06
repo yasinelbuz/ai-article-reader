@@ -6,6 +6,16 @@ import { useState } from 'react';
 import { Menu, X, BookOpen, Info } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { siteConfig } from '@/config/site';
+import { useRouter, useSearchParams } from 'next/navigation';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const Switch = dynamic(() => import('./ui/switch'), { ssr: false });
 
@@ -18,22 +28,49 @@ type MenuMapProps = {
   setIsOpen: (value: boolean) => void;
 };
 
-const MenuMap = ({ setIsOpen }: MenuMapProps) => (
-  <>
-    <Switch />
-    {menuItems.map(item => (
-      <Link
-        key={item.href}
-        href={item.href}
-        className="flex items-center gap-2 py-2 md:py-0 border-t md:border-t-0 border-gray-200 dark:border-gray-800"
-        onClick={() => setIsOpen(false)}
-      >
-        <item.icon className="w-4 h-4" />
-        <span>{item.label}</span>
-      </Link>
-    ))}
-  </>
-);
+const MenuMap = ({ setIsOpen }: MenuMapProps) => {
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const handleLanguageChange = (selectedLang: string) => {
+    const params = new URLSearchParams(searchParams?.toString() || '');
+    params.set('language', selectedLang);
+    router.push(`?${params.toString()}`);
+  };
+
+  return (
+    <>
+      <Switch />
+      <div className="flex items-center gap-2">
+        <Select onValueChange={(value: string) => {
+          handleLanguageChange(value as string)
+        }}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Dil Seçiniz" />
+          </SelectTrigger>
+          <SelectContent>
+          <SelectItem value="english">English</SelectItem>
+          <SelectItem value="germany">German</SelectItem>
+          <SelectItem value="russian">Russian</SelectItem>
+        </SelectContent>
+      </Select>
+      </div>
+      
+      {menuItems.map(item => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className="flex items-center gap-2 py-2 md:py-0 border-t md:border-t-0 border-gray-200 dark:border-gray-800"
+          onClick={() => setIsOpen(false)}
+        >
+          <item.icon className="w-4 h-4" />
+          <span>{item.label}</span>
+        </Link>
+      ))}
+    </>
+  );
+};
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

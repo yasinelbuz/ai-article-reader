@@ -10,9 +10,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"

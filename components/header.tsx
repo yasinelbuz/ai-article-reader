@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Menu, X, BookOpen, Info } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { siteConfig } from '@/config/site';
@@ -49,8 +49,6 @@ const MenuMap = ({ setIsOpen }: MenuMapProps) => {
     router.push(`?${params.toString()}`);
   }, []);
 
-  console.log(languageLocalStorageValue);
-
   return (
     <>
       <Switch />
@@ -68,7 +66,7 @@ const MenuMap = ({ setIsOpen }: MenuMapProps) => {
         </SelectContent>
       </Select>
       </div>
-      
+
       {menuItems.map(item => (
         <Link
           key={item.href}
@@ -88,6 +86,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <nav className="backdrop-blur-lg border-b dark:border-gray-800 border-gray-200 sticky top-0 z-50">
       <div className="flex items-center justify-between h-[var(--navbar-height)] px-[var(--primary-offset)]">
         <Link href="/" className="flex items-center gap-2">
@@ -115,5 +114,6 @@ export const Navbar = () => {
         </div>
       )}
     </nav>
+    </Suspense>
   );
 };

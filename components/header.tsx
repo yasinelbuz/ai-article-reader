@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Menu, X, BookOpen, Info } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { siteConfig } from '@/config/site';
@@ -14,6 +15,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { useLocalStorage, useReadLocalStorage } from 'usehooks-ts';
+import { storage } from '@/config/constants';
 
 const Switch = dynamic(() => import('./ui/switch'), { ssr: false });
 
@@ -30,24 +33,35 @@ const MenuMap = ({ setIsOpen }: MenuMapProps) => {
 
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [languageValue, setLanguageValue] = useLocalStorage(storage.language, 'english');
+  const languageLocalStorageValue = useReadLocalStorage(storage.language);
 
   const handleLanguageChange = (selectedLang: string) => {
     const params = new URLSearchParams(searchParams?.toString() || '');
     params.set('language', selectedLang);
     router.push(`?${params.toString()}`);
+    setLanguageValue(selectedLang);
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams?.toString() || '');
+    params.set('language', languageValue as string);
+    router.push(`?${params.toString()}`);
+  }, []);
+
+  console.log(languageLocalStorageValue);
 
   return (
     <>
       <Switch />
       <div className="flex items-center gap-2">
-        <Select onValueChange={(value: string) => {
-          handleLanguageChange(value as string)
-        }}>
+        <Select
+          onValueChange={(value: string) => handleLanguageChange(value)}
+        >
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Dil Seçiniz" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent defaultValue={languageLocalStorageValue as string || 'english'}>
           <SelectItem value="english">English</SelectItem>
           <SelectItem value="germany">German</SelectItem>
           <SelectItem value="russian">Russian</SelectItem>

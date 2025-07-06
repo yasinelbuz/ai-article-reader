@@ -13,4 +13,5 @@ export const storage = {
   isOpenAlert: 'isOpenAlert',
   note: 'note',
   readListId: 'readListId',
+  language: 'language',
 };

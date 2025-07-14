@@ -23,13 +23,13 @@ export const GeneralMetadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     type: 'website',
-    images: [{ url: siteConfig.ogImage }],
+    images: [{ url: siteConfig.ogImage, width: 800, height: 600 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [{ url: siteConfig.ogImage }],
+    images: [{ url: siteConfig.ogImage, width: 800, height: 600 }],
   },
   robots: {
     index: true,

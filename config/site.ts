@@ -1,11 +1,10 @@
 import { SiteConfig } from '@/types';
-import { site_url } from './constants';
 
 export const siteConfig: SiteConfig = {
   name: 'A lot of articles',
   description: 'Learn English with interesting articles',
-  url: site_url?.toString() || '',
-  ogImage: `${site_url?.toString() || ''}/og.png`,
+  url: 'https://ai-articles.vercel.app',
+  ogImage: 'https://ai-articles.vercel.app/og.png',
   mailSupport: 'yasinelbuz@gmail.com',
   authors: [{ name: 'Yasin Elbüz' }],
 };
